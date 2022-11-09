@@ -4,39 +4,39 @@ import { createRoot } from "react-dom/client";
 // CSS
 import "./index.css";
 
-// setup vars
-const author = "Alice Schertle";
-const title = "Little Blue Truck's Halloween: A Halloween";
-const img =
-  "https://images-na.ssl-images-amazon.com/images/I/914QgVSAVTL._AC_UL200_SR200,200_.jpg";
+// setup objects
+const firstBook = {
+  img: "https://images-na.ssl-images-amazon.com/images/I/914QgVSAVTL._AC_UL200_SR200,200_.jpg",
+  title: "Little Blue Truck's Halloween: A Halloween",
+  auth: "Alice Schertle",
+};
+
+const secondBook = {
+  img: "https://images-na.ssl-images-amazon.com/images/I/914QgVSAVTL._AC_UL200_SR200,200_.jpg",
+  title: "Little Blue Truck's Valentine",
+  auth: "Samantha Brooke",
+};
 
 function BookList(shakeAndBake) {
   console.log("shakeAndBake", shakeAndBake); // {}
   return (
     <section className="booklist">
-      {/*
-      props >> Object { job: "developer" }
-       */}
-      <Book job="developer" />
-      {/* 
-      props >> Object { title: "random", number: 22 }
-       */}
-      <Book title="random" number={20 + 2} />
+      <Book img={firstBook.img} title={firstBook.title} auth={firstBook.auth} />
+      <Book
+        img={secondBook.img}
+        title={secondBook.title}
+        auth={secondBook.auth}
+      />
     </section>
   );
 }
 
 const Book = (props) => {
-  console.log("props", props); // {}
   return (
     <article className="book">
-      <img className="img" src={img} alt="book" />
-      <h3>{title}</h3>
-      <h4>{author.toUpperCase()}</h4>
-      <p>{5 + 5}</p>
-      <p>{props.job}</p>
-      <p>{props.title}</p>
-      <p>{props.number}</p>
+      <img className="img" src={props.img} alt="book" />
+      <h3>{props.title}</h3>
+      <h4>{props.auth}</h4>
     </article>
   );
 };
