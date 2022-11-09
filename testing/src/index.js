@@ -10,7 +10,10 @@ function BookList() {
   );
 }
 
+const author = "Alice Schertle";
+
 const Book = () => {
+  const title = "Little Blue Truck's Halloween: A Halloween";
   return (
     <article className="book">
       <img
@@ -18,8 +21,9 @@ const Book = () => {
         src="https://images-na.ssl-images-amazon.com/images/I/914QgVSAVTL._AC_UL200_SR200,200_.jpg"
         alt="book"
       />
-      <h3>Little Blue Truck's Halloween: A Halloween </h3>
-      <h4>Alice Schertle</h4>
+      <h3>{title}</h3>
+      <h4>{author.toUpperCase()}</h4>
+      <p>{5 + 5}</p>
     </article>
   );
 };
