@@ -27,6 +27,7 @@ h4 {
 @media screen and (min-width: 768px) {
   .booklist {
     grid-template-columns: repeat(3, 1fr);
+    /* change items height → */
     /* align-items: flex-start; */
   }
 }
@@ -36,7 +37,12 @@ h4 {
   border-radius: 1rem;
   padding: 1rem 2rem;
 }
+
 .book h3 {
   color: cornflowerblue;
   padding-top: 1.5rem;
+}
+
+.book p {
+  margin-top: 0.5rem;
 }
