@@ -5,16 +5,24 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 
 // setup objects
-const book = [
+const books = [
   {
-    img: "https://images-na.ssl-images-amazon.com/images/I/8144Vic9C5L._AC_UL200_SR200,200_.jpg",
+    id: 1,
     title: "I Love You to the Moon and Back",
-    auth: "Alice Schertle",
+    author: "Amelia Hepworth",
+    img: "https://images-na.ssl-images-amazon.com/images/I/8144Vic9C5L._AC_UL200_SR200,200_.jpg",
   },
   {
-    img: "https://images-na.ssl-images-amazon.com/images/I/817-Vrzp%2BtL._AC_UL200_SR200,200_.jpg",
+    id: 2,
     title: "Little Blue Truck's Valentine",
-    auth: "Samantha Brooke",
+    author: "Alice Schertle",
+    img: "https://images-na.ssl-images-amazon.com/images/I/817-Vrzp%2BtL._AC_UL200_SR200,200_.jpg",
+  },
+  {
+    id: 3,
+    title: "Golden Girls: Goodnight, Girls",
+    author: "Samantha Brooke",
+    img: "https://images-na.ssl-images-amazon.com/images/I/914QgVSAVTL._AC_UL200_SR200,200_.jpg",
   },
 ];
 
@@ -28,8 +36,8 @@ const book = [
 function BookList() {
   return (
     <section className="booklist">
-      {book.map((book, idx) => {
-        return <Book key={idx} books={book} />;
+      {books.map((book) => {
+        return <Book key={book.id} books={book} />;
         // return (
         //   <Book key={idx} img={book.img} title={book.title} auth={book.auth} />
         // );
@@ -40,14 +48,14 @@ function BookList() {
 
 // name "children" is matter !!!
 const Book = (props) => {
-  const { img, title, auth } = props.books;
-  console.log("props", props); // 2nd object includes children
+  const { img, title, author } = props.books;
+  //console.log("props", props); // 2nd object includes children
   /* Object { img: "https://images-na.ssl-images-amazon.com/images/I/8144Vic9C5L._AC_UL200_SR200,200_.jpg", title: "I Love You to the Moon and Back", auth: "Alice Schertle", children: {…} } */
   return (
     <article className="book">
       <img className="img" src={img} alt="book alt text" />
       <h3>{title}</h3>
-      <h4>{auth}</h4>
+      <h4>{author}</h4>
     </article>
   );
 };
