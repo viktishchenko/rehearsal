@@ -17,8 +17,7 @@ const secondBook = {
   auth: "Samantha Brooke",
 };
 
-function BookList(shakeAndBake) {
-  console.log("shakeAndBake", shakeAndBake); // {}
+function BookList() {
   return (
     <section className="booklist">
       <Book img={firstBook.img} title={firstBook.title} auth={firstBook.auth} />
@@ -32,11 +31,12 @@ function BookList(shakeAndBake) {
 }
 
 const Book = (props) => {
+  const { img, title, auth } = props;
   return (
     <article className="book">
-      <img className="img" src={props.img} alt="book" />
-      <h3>{props.title}</h3>
-      <h4>{props.auth}</h4>
+      <img className="img" src={img} alt="book" />
+      <h3>{title}</h3>
+      <h4>{auth}</h4>
     </article>
   );
 };
