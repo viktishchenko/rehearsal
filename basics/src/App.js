@@ -1,5 +1,4 @@
-import Second from "./tutorial/1-useState/1-error-example";
-// import Second from "./tutorial/1-useState/2-useState-basics";
+import Second from "./tutorial/1-useState/2-useState-basics";
 
 function App() {
   return (
