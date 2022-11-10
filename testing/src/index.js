@@ -40,7 +40,7 @@ function BookList() {
 
 // name "children" is matter !!!
 const Book = (props) => {
-  const { img, title, auth } = props;
+  const { img, title, auth, children } = props;
   console.log("props", props); // 2nd object includes children
   /* Object { img: "https://images-na.ssl-images-amazon.com/images/I/8144Vic9C5L._AC_UL200_SR200,200_.jpg", title: "I Love You to the Moon and Back", auth: "Alice Schertle", children: {…} } */
   return (
@@ -48,7 +48,7 @@ const Book = (props) => {
       <img className="img" src={img} alt="book" />
       <h3>{title}</h3>
       <h4>{auth}</h4>
-      {props.children}
+      {children}
     </article>
   );
 };
