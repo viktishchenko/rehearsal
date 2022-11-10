@@ -4,7 +4,6 @@ import { createRoot } from "react-dom/client";
 // CSS
 import "./index.css";
 
-// setup objects
 const books = [
   {
     id: 1,
@@ -26,31 +25,18 @@ const books = [
   },
 ];
 
-// iterate through array
-// const array = ["john", "peter", "susan"];
-// const res = array.map((name, key) => {
-//   return <h1 key={key}>{name}</h1>;
-// });
-
-// children props adds between close and open tags !!!
 function BookList() {
   return (
     <section className="booklist">
       {books.map((book) => {
-        return <Book key={book.id} books={book} />;
-        // return (
-        //   <Book key={idx} img={book.img} title={book.title} auth={book.auth} />
-        // );
+        return <Book key={book.id} {...book} />;
       })}
     </section>
   );
 }
 
-// name "children" is matter !!!
 const Book = (props) => {
-  const { img, title, author } = props.books;
-  //console.log("props", props); // 2nd object includes children
-  /* Object { img: "https://images-na.ssl-images-amazon.com/images/I/8144Vic9C5L._AC_UL200_SR200,200_.jpg", title: "I Love You to the Moon and Back", auth: "Alice Schertle", children: {…} } */
+  const { img, title, author } = props;
   return (
     <article className="book">
       <img className="img" src={img} alt="book alt text" />
