@@ -5,7 +5,11 @@ const UseStateBasics = () => {
   console.log(title);
 
   const handleClick = () => {
-    setTitle("new title");
+    if (title === "default title") {
+      setTitle("new title");
+    } else {
+      setTitle("default title");
+    }
   };
   return (
     <>
