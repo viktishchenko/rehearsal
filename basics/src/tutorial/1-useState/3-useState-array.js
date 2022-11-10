@@ -6,10 +6,10 @@ const UseStateArray = () => {
   return (
     <>
       {people.map((person) => {
-        console.log("person", person);
+        const { id, name } = person;
         return (
-          <div className="item" key={person.id}>
-            <h3>{person.name}</h3>
+          <div className="item" key={id}>
+            <h3>{name}</h3>
           </div>
         );
       })}
