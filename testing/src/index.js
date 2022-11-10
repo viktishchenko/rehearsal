@@ -19,27 +19,35 @@ const book = [
 ];
 
 // iterate through array
-const array = ["john", "peter", "susan"];
-const res = array.map((name, key) => {
-  return <h1 key={key}>{name}</h1>;
-});
+// const array = ["john", "peter", "susan"];
+// const res = array.map((name, key) => {
+//   return <h1 key={key}>{name}</h1>;
+// });
 
 // children props adds between close and open tags !!!
 function BookList() {
-  return <section className="booklist">{res}</section>;
+  return (
+    <section className="booklist">
+      {book.map((book, idx) => {
+        return <Book key={idx} books={book} />;
+        // return (
+        //   <Book key={idx} img={book.img} title={book.title} auth={book.auth} />
+        // );
+      })}
+    </section>
+  );
 }
 
 // name "children" is matter !!!
 const Book = (props) => {
-  const { img, title, auth, children } = props;
+  const { img, title, auth } = props.books;
   console.log("props", props); // 2nd object includes children
   /* Object { img: "https://images-na.ssl-images-amazon.com/images/I/8144Vic9C5L._AC_UL200_SR200,200_.jpg", title: "I Love You to the Moon and Back", auth: "Alice Schertle", children: {…} } */
   return (
     <article className="book">
-      <img className="img" src={img} alt="book" />
+      <img className="img" src={img} alt="book alt text" />
       <h3>{title}</h3>
       <h4>{auth}</h4>
-      {children}
     </article>
   );
 };
