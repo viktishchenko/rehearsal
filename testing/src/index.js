@@ -5,37 +5,28 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 
 // setup objects
-const firstBook = {
-  img: "https://images-na.ssl-images-amazon.com/images/I/8144Vic9C5L._AC_UL200_SR200,200_.jpg",
-  title: "I Love You to the Moon and Back",
-  auth: "Alice Schertle",
-};
+const book = [
+  {
+    img: "https://images-na.ssl-images-amazon.com/images/I/8144Vic9C5L._AC_UL200_SR200,200_.jpg",
+    title: "I Love You to the Moon and Back",
+    auth: "Alice Schertle",
+  },
+  {
+    img: "https://images-na.ssl-images-amazon.com/images/I/817-Vrzp%2BtL._AC_UL200_SR200,200_.jpg",
+    title: "Little Blue Truck's Valentine",
+    auth: "Samantha Brooke",
+  },
+];
 
-const secondBook = {
-  img: "https://images-na.ssl-images-amazon.com/images/I/817-Vrzp%2BtL._AC_UL200_SR200,200_.jpg",
-  title: "Little Blue Truck's Valentine",
-  auth: "Samantha Brooke",
-};
+// iterate through array
+const array = ["john", "peter", "susan"];
+const res = array.map((name, key) => {
+  return <h1 key={key}>{name}</h1>;
+});
 
 // children props adds between close and open tags !!!
 function BookList() {
-  return (
-    <section className="booklist">
-      <Book img={firstBook.img} title={firstBook.title} auth={firstBook.auth}>
-        <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nulla optio
-          repudiandae eligendi voluptatem ipsa! Explicabo culpa cum perferendis
-          provident quas maiores harum similique excepturi aut sequi fugit,
-          error consequuntur cupiditate!
-        </p>
-      </Book>
-      <Book
-        img={secondBook.img}
-        title={secondBook.title}
-        auth={secondBook.auth}
-      />
-    </section>
-  );
+  return <section className="booklist">{res}</section>;
 }
 
 // name "children" is matter !!!
