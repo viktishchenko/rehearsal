@@ -36,11 +36,36 @@ function BookList() {
 }
 
 const Book = ({ img, title, author }) => {
+  console.log("author", author);
+
+  const clickHandler = (second) => {
+    return alert(`Hello: ${author}`);
+  };
+  const complexClick = () => {
+    console.log(author);
+  };
   return (
     <article className="book">
       <img className="img" src={img} alt="book alt text" />
-      <h3>{title}</h3>
+      <h3
+        onClick={() => {
+          console.log(title); // title string
+        }}
+      >
+        {title}
+      </h3>
       <h4>{author}</h4>
+      <button type="button" onClick={clickHandler}>
+        Click
+      </button>
+      <button
+        type="button"
+        onClick={() => {
+          complexClick();
+        }}
+      >
+        Click
+      </button>
     </article>
   );
 };
