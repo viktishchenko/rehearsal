@@ -1,4 +1,4 @@
-import Second from "./tutorial/3-conditional-rendering/1-multiple-return";
+import Second from "./tutorial/3-conditional-rendering/2-short-circuit";
 
 function App() {
   return (
