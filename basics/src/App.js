@@ -1,4 +1,4 @@
-import Second from "./tutorial/1-useState/3-useState-array";
+import Second from "./tutorial/2-useEffect/1-useEffect-basics";
 
 function App() {
   return (
