@@ -1,4 +1,4 @@
-import Second from "./tutorial/2-useEffect/2-useEffect-cleanup";
+import Second from "./tutorial/2-useEffect/3-useEffect-fetch-data";
 
 function App() {
   return (
