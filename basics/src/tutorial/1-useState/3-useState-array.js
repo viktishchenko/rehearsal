@@ -7,12 +7,21 @@ import { data } from "../../data";
 const UseStateArray = () => {
   const [people, setPeople] = React.useState(data);
 
+  // refactor with previous state
   const removeItem = (id) => {
-    let newPeople = people.filter((person) => {
-      return person.id !== id;
+    setPeople((currentState) => {
+      let newValue = currentState.filter((person) => {
+        return person.id !== id;
+      });
+      return newValue;
     });
-    setPeople(newPeople);
   };
+  // const removeItem = (id) => {
+  //   let newPeople = people.filter((person) => {
+  //     return person.id !== id;
+  //   });
+  //   setPeople(newPeople);
+  // };
   return (
     <>
       {people.map((person) => {
