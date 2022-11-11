@@ -7,18 +7,29 @@ const UseStateObject = () => {
     message: "radom text",
   });
 
+  // or we can use many small states...
+
+  const [name, setName] = React.useState("susan");
+  const [age, setAge] = React.useState(22);
+  const [message, setMessage] = React.useState("susan random text");
+
   const changeMessage = () => {
-    if (person.message === "radom text") {
-      setPerson({ ...person, message: "new message" });
+    if (message === "susan random text") {
+      setMessage("susan new message");
     } else {
-      setPerson({ ...person, message: "radom text" });
+      setMessage("susan random text");
     }
+    // if (person.message === "radom text") {
+    //   setPerson({ ...person, message: "new message" });
+    // } else {
+    //   setPerson({ ...person, message: "radom text" });
+    // }
   };
   return (
     <>
-      <h3>{person.name}</h3>
-      <h3>{person.age}</h3>
-      <h3>{person.message}</h3>
+      <h3>{name}</h3>
+      <h3>{age}</h3>
+      <h3>{message}</h3>
       <button className="btn" onClick={changeMessage}>
         chage message
       </button>
