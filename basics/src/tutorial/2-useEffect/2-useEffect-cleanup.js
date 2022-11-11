@@ -8,9 +8,14 @@ const UseEffectCleanup = () => {
   };
 
   useEffect(() => {
+    console.log("useEffect");
     window.addEventListener("resize", checkSize);
+    return () => {
+      console.log("cleanup");
+      window.removeEventListener("resize", checkSize);
+    };
   });
-
+  console.log("render");
   return (
     <>
       <h3>window current width</h3>
