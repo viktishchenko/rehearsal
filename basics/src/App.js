@@ -1,4 +1,4 @@
-import Second from "./tutorial/2-useEffect/3-useEffect-fetch-data";
+import Second from "./tutorial/3-conditional-rendering/1-multiple-return";
 
 function App() {
   return (
