@@ -22,7 +22,6 @@ const MultipleInputs = () => {
     const name = e.target.name;
     const value = e.target.value;
     setPerson({ ...person, [name]: value });
-    console.log("person", person);
   };
 
   const handleSubmit = (e) => {
@@ -31,11 +30,11 @@ const MultipleInputs = () => {
       const newPerson = { ...person, id: new Date().getTime().toString() };
       setPeople([...people, newPerson]);
       console.log("submit form");
+      setPerson({ firstName: "", email: "", age: "" });
     } else {
       console.log("empty values");
     }
   };
-  console.log("people", people);
 
   return (
     <>
