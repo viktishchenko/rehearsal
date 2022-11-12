@@ -11,11 +11,28 @@ value, onChange
 const ControlledInputs = () => {
   const [firstName, setFirstName] = useState("");
   const [email, setEmail] = useState("");
+  const [people, setPeople] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(firstName, email);
+    if (firstName && email) {
+      console.log("submit the form");
+      const people = {
+        id: new Date().getTime().toString(),
+        name: firstName,
+        mail: email,
+      };
+      setPeople((oldValue) => {
+        return [...oldValue, people];
+      });
+      // clean input value
+      setFirstName("");
+      setEmail("");
+    } else {
+      console.log("empty values");
+    }
   };
+
   return (
     <>
       <article>
@@ -47,6 +64,18 @@ const ControlledInputs = () => {
           <button type="submit">add person</button>
         </form>
       </article>
+      <br />
+      <div className="list">
+        {people.map((person) => {
+          const { id, name, mail } = person;
+          return (
+            <div key={id} className="item">
+              <h2>{name}</h2>
+              <p>{mail}</p>
+            </div>
+          );
+        })}
+      </div>
     </>
   );
 };
