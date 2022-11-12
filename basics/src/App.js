@@ -1,4 +1,4 @@
-import Second from "./tutorial/3-conditional-rendering/3-show-hide";
+import Second from "./tutorial/4-forms/1-controlled-inputs";
 
 function App() {
   return (
