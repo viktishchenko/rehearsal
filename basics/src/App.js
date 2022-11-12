@@ -1,4 +1,4 @@
-import Second from "./tutorial/4-forms/1-controlled-inputs";
+import Second from "./tutorial/4-forms/2-multiple-inputs";
 
 function App() {
   return (
