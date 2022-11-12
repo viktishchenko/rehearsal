@@ -21,13 +21,21 @@ const MultipleInputs = () => {
   const handleChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
-    console.log("name, value", name, value);
+    setPerson({ ...person, [name]: value });
+    console.log("person", person);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("submit form");
+    if (person.firstName && person.email && person.age) {
+      const newPerson = { ...person, id: new Date().getTime().toString() };
+      setPeople([...people, newPerson]);
+      console.log("submit form");
+    } else {
+      console.log("empty values");
+    }
   };
+  console.log("people", people);
 
   return (
     <>
@@ -68,6 +76,19 @@ const MultipleInputs = () => {
           </button>
         </form>
       </article>
+      <br />
+      <div className="list">
+        {people.map((person) => {
+          const { id, firstName, email: mail, age: a } = person;
+          return (
+            <div key={id} className="item">
+              <h2>{firstName}</h2>
+              <p>{a}</p>
+              <p>{mail}</p>
+            </div>
+          );
+        })}
+      </div>
     </>
   );
 };
