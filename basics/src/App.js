@@ -1,4 +1,4 @@
-import Second from "./tutorial/5-useRef/1-useRef-basics";
+import Second from "./tutorial/6-useReducer/";
 
 function App() {
   return (
