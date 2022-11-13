@@ -63,7 +63,7 @@ const MultipleInputs = () => {
           <div className="form-control">
             <label htmlFor="age">Age: </label>
             <input
-              type="age"
+              type="number"
               name="age"
               id="age"
               value={person.age}

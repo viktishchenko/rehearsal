@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from "react";
 
+/* 
+   by default runs after every re-render
+   cleanup function
+   second parameter
+*/
+
 const UseEffectBasics = () => {
   const [value, setValue] = useState(0);
 

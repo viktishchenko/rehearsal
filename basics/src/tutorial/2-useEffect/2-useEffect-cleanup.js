@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from "react";
 
+/* 
+   cleanup function
+   second argument
+*/
+
 const UseEffectCleanup = () => {
   const [size, setSize] = useState(window.innerWidth);
 

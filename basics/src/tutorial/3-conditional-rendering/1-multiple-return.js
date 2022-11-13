@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from "react";
 
+/* 
+   short-circuit evaluation
+   ternary operator
+*/
+
 const url = "https://api.github.com/users/QuincyLarson";
 
 const MultipleReturn = () => {
