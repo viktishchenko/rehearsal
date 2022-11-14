@@ -1,34 +1,8 @@
 import React, { useReducer, useState } from "react";
 import Modal from "./Modal";
-import { data } from "../../data";
+import { reducer } from "./reducer";
 
 // reducer function
-const reducer = (state, action) => {
-  if (action.type === "ADD_ITEM") {
-    const newPeople = [...state.people, action.payload];
-    return {
-      ...state,
-      people: newPeople,
-      isModalOpen: true,
-      modalContent: "item added",
-    };
-  }
-  if (action.type === "NO_VALUE") {
-    return {
-      ...state,
-      isModalOpen: true,
-      modalContent: "please enter value",
-    };
-  }
-  if (action.type === "CLOSE_MODAL") {
-    return {
-      ...state,
-      isModalOpen: false,
-    };
-  }
-  // must return state or throw new Error();
-  throw new Error("no matching action type");
-};
 
 const defaultState = {
   people: [],
@@ -74,8 +48,15 @@ const Index = () => {
       {state.people.map((person) => {
         const { id, name } = person;
         return (
-          <div key={id}>
+          <div key={id} className="item">
             <h3>{name}</h3>
+            <button
+              onClick={() => {
+                dispatch({ type: "REMOVE_ITEM", payload: person.id });
+              }}
+            >
+              remove
+            </button>
           </div>
         );
       })}
