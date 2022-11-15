@@ -8,7 +8,7 @@ const Index = () => {
   const { products, isLoading } = useFetch(url);
   return (
     <div>
-      <h3>{isLoading ? "loading..." : "Index"}</h3>
+      <h3>{isLoading ? "loading..." : "single product"}</h3>
       <section className="products">
         {products.map((product) => {
           const { id } = product;
