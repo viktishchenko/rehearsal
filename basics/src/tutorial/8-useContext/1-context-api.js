@@ -17,17 +17,19 @@ const ContextApi = () => {
   };
 
   return (
-    <PersonContext.Provider value={{ removeSingleItem }}>
-      <h3>context api</h3>
-      <List people={people} />
+    <PersonContext.Provider value={{ removeSingleItem, people }}>
+      <h3>context api/useContext</h3>
+      <List />
     </PersonContext.Provider>
   );
 };
 
-const List = ({ people }) => {
+const List = () => {
+  const contextData = useContext(PersonContext);
+  // clg: contextData → Array(4) [ {…}, … ] removeSingleItem: func
   return (
     <>
-      {people.map((person) => {
+      {contextData.people.map((person) => {
         const { id } = person;
         return <SingleItem key={id} {...person} />;
       })}
