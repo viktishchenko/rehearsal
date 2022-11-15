@@ -1,4 +1,4 @@
-import Second from "./tutorial/8-useContext/1-context-api";
+import Second from "./tutorial/9-custom-hooks/1-fetch-example";
 
 function App() {
   return (
