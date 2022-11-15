@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { data } from "../../data";
 
 /* 
   more components
   fix - context api, redux(for more complex cases)
 */
+
+const PersonContext = React.createContext();
+// two components - Provider, Consumer
 
 const ContextApi = () => {
   const [people, setPeople] = useState(data);
@@ -14,31 +17,26 @@ const ContextApi = () => {
   };
 
   return (
-    <section>
+    <PersonContext.Provider value={{ removeSingleItem }}>
       <h3>context api</h3>
-      <List people={people} removeSingleItem={removeSingleItem} />
-    </section>
+      <List people={people} />
+    </PersonContext.Provider>
   );
 };
 
-const List = ({ people, removeSingleItem }) => {
+const List = ({ people }) => {
   return (
     <>
       {people.map((person) => {
         const { id } = person;
-        return (
-          <SingleItem
-            key={id}
-            {...person}
-            removeSingleItem={removeSingleItem}
-          />
-        );
+        return <SingleItem key={id} {...person} />;
       })}
     </>
   );
 };
 
-const SingleItem = ({ id, name, removeSingleItem }) => {
+const SingleItem = ({ id, name }) => {
+  const { removeSingleItem } = useContext(PersonContext);
   return (
     <div className="item">
       <h4>{name}</h4>
