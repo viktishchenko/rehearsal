@@ -1,4 +1,4 @@
-import Second from "./tutorial/9-custom-hooks/1-fetch-example";
+import Second from "./tutorial/10-prop-types";
 
 function App() {
   return (
