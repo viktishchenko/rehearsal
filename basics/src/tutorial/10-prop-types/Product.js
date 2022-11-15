@@ -1,15 +1,15 @@
 // imr, ipt
 import React from "react";
-// import propTypes from "prop-types";
+import propTypes from "prop-types";
 import defaultImage from "../../assets/default-image.jpeg";
 
 const Product = ({
-  // image,
-  // name,
-  // price,
-  image = { defaultImage },
-  name = "default name",
-  price = 3.55,
+  image,
+  name,
+  price,
+  // image = { defaultImage },
+  // name = "default name",
+  // price = 3.55,
 }) => {
   /* 
     CHECK DATA WITH propsTypes: image, name, price
@@ -31,17 +31,17 @@ const Product = ({
   );
 };
 
-// Product.propTypes = {
-//   image: propTypes.object.isRequired,
-//   name: propTypes.string.isRequired,
-//   price: propTypes.number.isRequired,
-// };
+Product.propTypes = {
+  image: propTypes.object.isRequired,
+  name: propTypes.string.isRequired,
+  price: propTypes.number.isRequired,
+};
 
 // add default props
-// Product.defaultProps = {
-//   name: "default name",
-//   price: 3.99,
-//   image: { defaultImage },
-// };
+Product.defaultProps = {
+  name: "default name",
+  price: 3.99,
+  image: { defaultImage },
+};
 
 export default Product;
