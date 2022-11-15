@@ -1,11 +1,24 @@
-import Second from "./tutorial/10-prop-types";
+/* imprrd */
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./tutorial/11-react-router/pages/Home";
+import NotFound from "./tutorial/11-react-router/pages/NotFound";
 
 function App() {
   return (
-    <div className="container">
-      <h2>basics react</h2>
-      <Second />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route
+          path="/testing"
+          element={
+            <div>
+              <h3>testing page</h3>
+            </div>
+          }
+        />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
