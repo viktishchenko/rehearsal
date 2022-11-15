@@ -1,4 +1,4 @@
-import Second from "./tutorial/6-useReducer/";
+import Second from "./tutorial/7-prop-drilling/1-prop-drilling";
 
 function App() {
   return (
