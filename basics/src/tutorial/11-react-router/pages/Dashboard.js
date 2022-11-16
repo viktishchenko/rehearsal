@@ -1,6 +1,6 @@
 const Dashboard = () => {
   return (
-    <section>
+    <section className="section">
       <h2>Dashboerd</h2>
     </section>
   );

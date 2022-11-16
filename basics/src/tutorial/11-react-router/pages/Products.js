@@ -1,6 +1,6 @@
 const Products = () => {
   return (
-    <section>
+    <section className="section">
       <h2>products</h2>
     </section>
   );

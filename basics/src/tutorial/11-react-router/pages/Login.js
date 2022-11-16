@@ -1,6 +1,6 @@
 const Login = () => {
   return (
-    <section>
+    <section className="section">
       <h2>login</h2>
     </section>
   );
