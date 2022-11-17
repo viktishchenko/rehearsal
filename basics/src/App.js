@@ -16,8 +16,8 @@ function App() {
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />
           <Route path="products" element={<Products />} />
+          <Route path="products/:productId" element={<SingleProduct />} />
           <Route path="dashboard" element={<Dashboard />} />
-          <Route path="singleproduct" element={<SingleProduct />} />
           <Route path="*" element={<Error />} />
         </Route>
       </Routes>
