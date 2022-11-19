@@ -1,4 +1,4 @@
-import { useState, useCallback, useMemo } from "react";
+import { useState, useCallback, memo } from "react";
 import { useFetch } from "../9-custom-hooks/2-useFetch";
 
 const url = "https://course-api.com/javascript-store-products";
@@ -26,8 +26,9 @@ const Index = () => {
   );
 };
 
-const BigList = ({ products }) => {
-  console.log("biglist"); // re-render list
+// re-render only useFetch()
+const BigList = memo(({ products }) => {
+  console.log("biglist"); // 0
   return (
     <section className="products">
       {products.map((product) => {
@@ -36,10 +37,10 @@ const BigList = ({ products }) => {
       })}
     </section>
   );
-};
+});
 
 const SingleProduct = ({ fields }) => {
-  console.log("single"); // each single product re-render
+  console.log("single"); // 0
   let { name, price } = fields;
   price = price / 100;
   const image = fields.image[0].url;
