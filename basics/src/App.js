@@ -1,12 +1,12 @@
-import React from "react";
-import Second from "./tutorial/12-useMemoCallback";
+import Title from "./tutorial/13-axios/components/Title";
+import FirstRequest from "./tutorial/13-axios/examples/1-first-request";
 
 function App() {
   return (
-    <div className="container">
-      <h2>basics react</h2>
-      <Second />
-    </div>
+    <main>
+      <Title />
+      <FirstRequest />
+    </main>
   );
 }
 
