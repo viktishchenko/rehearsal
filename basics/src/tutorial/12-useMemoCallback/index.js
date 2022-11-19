@@ -3,7 +3,21 @@ import { useFetch } from "../9-custom-hooks/2-useFetch";
 
 const url = "https://course-api.com/javascript-store-products";
 
+//  MEMO DEAL with PROPS vs useMemo DEAL with VALUE
 // every time props or state changes, component re-renders
+
+const calculateMostExpensive = (data) => {
+  console.log("halo expensive>>>>");
+  return (
+    data.reduce((total, item) => {
+      const price = item.fields.price;
+      if (price >= total) {
+        total = price;
+      }
+      return total;
+    }, 0) / 100
+  );
+};
 
 const Index = () => {
   const { products } = useFetch(url);
@@ -27,6 +41,7 @@ const Index = () => {
         click me
       </button>
       <h1 style={{ marginTop: "3rem" }}>cart: {cart}</h1>
+      <h1>most expensive: ${calculateMostExpensive(products)}</h1>
       <BigList products={products} addToCart={addToCart} />
     </>
   );
