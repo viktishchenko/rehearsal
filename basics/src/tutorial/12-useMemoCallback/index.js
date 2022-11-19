@@ -7,8 +7,13 @@ const url = "https://course-api.com/javascript-store-products";
 
 const Index = () => {
   const { products } = useFetch(url);
-  console.log("products>>", products);
+  console.log("products>>", products); // re-render
   const [count, setCount] = useState(0);
+  const [cart, setCart] = useState(0);
+
+  const addToCart = () => {
+    setCart(cart + 1);
+  };
 
   return (
     <>
@@ -21,26 +26,27 @@ const Index = () => {
       >
         click me
       </button>
-      <BigList products={products} />
+      <h1 style={{ marginTop: "3rem" }}>cart: {cart}</h1>
+      <BigList products={products} addToCart={addToCart} />
     </>
   );
 };
 
 // re-render only useFetch()
-const BigList = memo(({ products }) => {
-  console.log("biglist"); // 0
+const BigList = memo(({ products, addToCart }) => {
+  console.log("biglist"); // re-render list
   return (
     <section className="products">
       {products.map((product) => {
         const { id } = product;
-        return <SingleProduct key={id} {...product} />;
+        return <SingleProduct key={id} {...product} addToCart={addToCart} />;
       })}
     </section>
   );
 });
 
-const SingleProduct = ({ fields }) => {
-  console.log("single"); // 0
+const SingleProduct = ({ fields, addToCart }) => {
+  console.log("single"); // re-render item
   let { name, price } = fields;
   price = price / 100;
   const image = fields.image[0].url;
@@ -49,6 +55,7 @@ const SingleProduct = ({ fields }) => {
       <img src={image} alt={name} />
       <h4>{name}</h4>
       <p>$ {price}</p>
+      <button onClick={addToCart}>add</button>
     </article>
   );
 };
