@@ -1,4 +1,4 @@
-import { useState, useCallback, memo } from "react";
+import { useState, useCallback, memo, useMemo } from "react";
 import { useFetch } from "../9-custom-hooks/2-useFetch";
 
 const url = "https://course-api.com/javascript-store-products";
@@ -29,6 +29,11 @@ const Index = () => {
     setCart(cart + 1);
   }, [cart]);
 
+  const mostExpensive = useMemo(
+    () => calculateMostExpensive(products),
+    [products]
+  );
+
   return (
     <>
       <h1>{count}</h1>
@@ -41,7 +46,7 @@ const Index = () => {
         click me
       </button>
       <h1 style={{ marginTop: "3rem" }}>cart: {cart}</h1>
-      <h1>most expensive: ${calculateMostExpensive(products)}</h1>
+      <h1>most expensive: ${mostExpensive}</h1>
       <BigList products={products} addToCart={addToCart} />
     </>
   );
