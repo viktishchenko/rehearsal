@@ -1,5 +1,5 @@
 import Title from "./tutorial/13-axios/components/Title";
-import FirstRequest from "./tutorial/13-axios/examples/3-post-request";
+import FirstRequest from "./tutorial/13-axios/examples/4-global-instance";
 
 function App() {
   return (
