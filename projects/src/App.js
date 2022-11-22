@@ -1,17 +1,8 @@
-import Review from "./draft/03-reviews/Review";
+import data from "./draft/04-accordion/data";
 
 function App() {
-  return (
-    <main>
-      <section className="container">
-        <div className="title">
-          <h2>our reviews</h2>
-          <div className="underline"></div>
-        </div>
-        <Review />
-      </section>
-    </main>
-  );
+  console.log(data);
+  return <h2>accordion project</h2>;
 }
 
 export default App;
