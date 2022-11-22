@@ -6,6 +6,14 @@ const Categories = ({ filterItems }) => {
       <button
         className="filter-btn"
         onClick={() => {
+          filterItems("all");
+        }}
+      >
+        all
+      </button>
+      <button
+        className="filter-btn"
+        onClick={() => {
           filterItems("breakfast");
         }}
       >
