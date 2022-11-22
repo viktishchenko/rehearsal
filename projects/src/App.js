@@ -1,23 +1,11 @@
 import { useState } from "react";
-import data from "./draft/04-accordion/data";
-import SingleQuestions from "./draft/04-accordion/Questions";
+import Menu from "./draft/05-menu/Menu";
+import Categories from "./draft/05-menu/Categories";
+import items from "./draft/05-menu/data";
 
 function App() {
-  const [questions, setQuestions] = useState(data);
-
-  return (
-    <main>
-      <div className="container">
-        <h3>accordion project</h3>
-        <section className="info">
-          {questions.map((item) => {
-            const { id } = item;
-            return <SingleQuestions key={id} {...item} />;
-          })}
-        </section>
-      </div>
-    </main>
-  );
+  console.log(items);
+  return <h2>menu project setup</h2>;
 }
 
 export default App;
