@@ -1,14 +1,16 @@
 import Review from "./draft/03-reviews/Review";
-import { FaBeer } from "react-icons/fa";
 
 function App() {
   return (
-    <>
-      <h2>
-        reviews <FaBeer className="icon" />
-      </h2>
-      <Review />
-    </>
+    <main>
+      <section className="container">
+        <div className="title">
+          <h2>our reviews</h2>
+          <div className="underline"></div>
+        </div>
+        <Review />
+      </section>
+    </main>
   );
 }
 
