@@ -18,9 +18,12 @@ function App() {
   }, [index, people]);
 
   useEffect(() => {
-    setInterval(() => {
+    let slider = setInterval(() => {
       setIndex(index + 1);
     }, 3000);
+    return () => {
+      clearInterval(slider);
+    };
   }, [index]);
 
   return (
@@ -54,20 +57,20 @@ function App() {
           );
         })}
         <button
-          className="prev"
+          className="next"
           onClick={() => {
             setIndex(index - 1);
           }}
         >
-          <FiChevronLeft />
+          <FiChevronRight />
         </button>
         <button
-          className="next"
+          className="prev"
           onClick={() => {
             setIndex(index + 1);
           }}
         >
-          <FiChevronRight />
+          <FiChevronLeft />
         </button>
       </div>
     </section>
