@@ -4,7 +4,11 @@ import Navbar from "./draft/11-navbar/Navbar";
 
 /* rfce */
 function App() {
-  return <Navbar />;
+  return (
+    <>
+      <Navbar />
+    </>
+  );
 }
 
 export default App;
