@@ -6,6 +6,9 @@ const AppProvider = ({ children }) => {
   return <AppContext.Provider value="halo">{children}</AppContext.Provider>;
 };
 
-// custom hook
+// custom hook (naming IMPORTANT!!!)
+export const useGlobalContext = () => {
+  return useContext(AppContext);
+};
 
 export { AppContext, AppProvider };
