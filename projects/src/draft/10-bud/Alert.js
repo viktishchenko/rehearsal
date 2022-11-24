@@ -1,7 +1,7 @@
 /* imrse */
 import { useEffect } from "react";
 
-const Alert = ({ msg, type, removeAlert }) => {
+const Alert = ({ msg, type, removeAlert, list }) => {
   useEffect(() => {
     const timeout = setTimeout(() => {
       removeAlert();
@@ -9,7 +9,7 @@ const Alert = ({ msg, type, removeAlert }) => {
     return () => {
       clearTimeout(timeout);
     };
-  }, []);
+  }, [list]);
 
   return <p className={`alert alert-${type}`}>{msg}</p>;
 };
