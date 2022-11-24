@@ -1,115 +1,14 @@
-/* imrse */
-import { useState, useEffect } from "react";
-import Alert from "./draft/10-bud/Alert";
-import List from "./draft/10-bud/List";
-
-const getLocalStorage = () => {
-  let list = localStorage.getItem("list");
-  if (list) {
-    return (list = JSON.parse(localStorage.getItem("list")));
-  } else {
-    return [];
-  }
-};
+/* imrs */
+import { useState } from "react";
+import Navbar from "./draft/11-navbar/Navbar";
 
 /* rfce */
+
 function App() {
-  const [name, setName] = useState("");
-  const [list, setList] = useState(getLocalStorage);
-  const [isEditing, setIsEditing] = useState(false);
-  const [editID, setEditID] = useState(null);
-  const [alert, setAlert] = useState({
-    show: false,
-    msg: "",
-    type: "",
-  });
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!name) {
-      //display alert
-      showAlert(true, "danger", "please enter value");
-    } else if (name && isEditing) {
-      // deal w edit
-      setList(
-        list.map((item) => {
-          if (item.id === editID) {
-            return { ...item, title: name };
-          }
-          return item;
-        })
-      );
-      setName("");
-      setEditID(null);
-      setIsEditing(false);
-      showAlert(true, "success", "item changed");
-    } else {
-      showAlert(true, "success", "item added to list");
-      const newItem = {
-        id: new Date().getTime().toString(),
-        title: name,
-      };
-      setList([...list, newItem]);
-      setName("");
-    }
-  };
-
-  const showAlert = (show = false, type = "", msg = "") => {
-    setAlert({ show, type, msg });
-  };
-
-  const clearList = () => {
-    showAlert(true, "danger", "empty list");
-    setList([]);
-  };
-
-  const removeItem = (id) => {
-    showAlert(true, "danger", "item deleted");
-    setList(list.filter((item) => item.id !== id));
-  };
-
-  const editItem = (id) => {
-    const specificItem = list.find((item) => item.id === id);
-    console.log("list>>", list);
-    console.log("specificItem>>", specificItem);
-    setIsEditing(true);
-    setEditID(id);
-    setName(specificItem.title);
-  };
-
-  useEffect(() => {
-    localStorage.setItem("list", JSON.stringify(list));
-  }, [list]);
-
   return (
-    <section className="section-center">
-      <form onSubmit={handleSubmit} className="grocery-form">
-        {alert.show && <Alert {...alert} removeAlert={showAlert} list={list} />}
-        <h3>grocery bud</h3>
-        <div className="form-control">
-          <input
-            type="text"
-            className="grocery"
-            placeholder="e.g. milk"
-            value={name}
-            onChange={(e) => {
-              setName(e.target.value);
-            }}
-          />
-          <button type="submit" className="submit-btn">
-            {isEditing ? "edit" : "submit"}
-          </button>
-        </div>
-      </form>
-      {list.length > 0 && (
-        <div className="grocery-container">
-          <List items={list} removeItem={removeItem} editItem={editItem} />
-          <button className="clear-btn" onClick={clearList}>
-            clear items
-          </button>
-        </div>
-      )}
-    </section>
+    <>
+      <h2>navbar project</h2>
+    </>
   );
 }
 
