@@ -8,7 +8,6 @@ import Sidebar from "./draft/12-sidebarModal/Sidebar";
 function App() {
   return (
     <>
-      <h2>sidebar & modal</h2>
       <Home />
       <Modal />
       <Sidebar />
