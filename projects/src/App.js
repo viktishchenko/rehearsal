@@ -1,12 +1,17 @@
 /* imrs */
 import { useState } from "react";
-import Navbar from "./draft/11-navbar/Navbar";
+import Home from "./draft/12-sidebarModal/Home";
+import Modal from "./draft/12-sidebarModal/Modal";
+import Sidebar from "./draft/12-sidebarModal/Sidebar";
 
 /* rfce */
 function App() {
   return (
     <>
-      <Navbar />
+      <h2>sidebar & modal</h2>
+      <Home />
+      <Modal />
+      <Sidebar />
     </>
   );
 }
