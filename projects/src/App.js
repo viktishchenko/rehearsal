@@ -1,16 +1,17 @@
 /* imrs */
-import { useState } from "react";
-import Home from "./draft/12-sidebarModal/Home";
-import Modal from "./draft/12-sidebarModal/Modal";
-import Sidebar from "./draft/12-sidebarModal/Sidebar";
+import Navbar from "./draft/13-submenu/Navbar";
+import Hero from "./draft/13-submenu/Hero";
+import Submenu from "./draft/13-submenu/Submenu";
+import Sidebar from "./draft/13-submenu/Sidebar";
 
 /* rfce */
 function App() {
   return (
     <>
-      <Home />
-      <Modal />
+      <Navbar />
+      <Hero />
       <Sidebar />
+      <Submenu />
     </>
   );
 }
