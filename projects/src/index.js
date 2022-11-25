@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./draft/13-submenu/css/index.css";
-import { AppProvider } from "./draft/13-submenu/context";
+import "./draft/14-cart/css/index.css";
+import { AppProvider } from "./draft/14-cart/context";
 import App from "./App";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

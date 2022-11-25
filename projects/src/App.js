@@ -1,18 +1,23 @@
-/* imrs */
-import Navbar from "./draft/13-submenu/Navbar";
-import Hero from "./draft/13-submenu/Hero";
-import Submenu from "./draft/13-submenu/Submenu";
-import Sidebar from "./draft/13-submenu/Sidebar";
+import { useGlobalContext } from "./draft/14-cart/context";
 
-/* rfce */
+// components
+import Navbar from "./draft/14-cart//Navbar";
+import CartContainer from "./draft/14-cart/CartContainer";
+// items
+
 function App() {
+  // if (loading) {
+  //   return (
+  //     <div className='loading'>
+  //       <h1>Loading...</h1>
+  //     </div>
+  //   )
+  // }
   return (
-    <>
+    <main>
       <Navbar />
-      <Sidebar />
-      <Hero />
-      <Submenu />
-    </>
+      <CartContainer />
+    </main>
   );
 }
 
