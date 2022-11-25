@@ -7,13 +7,9 @@ const Navbar = () => {
 
   const displaySubmenu = (e) => {
     const page = e.target.textContent;
-    console.log("page>>", page);
     const tempBtn = e.target.getBoundingClientRect();
-    console.log("tempBtn>>", tempBtn);
     const center = (tempBtn.left + tempBtn.right) / 2;
-    console.log("center>>", center);
     const bottom = tempBtn.bottom - 3;
-    console.log("bottom>>", bottom);
     openSubmenu(page, { center, bottom });
   };
   return (
@@ -28,7 +24,7 @@ const Navbar = () => {
         <ul className="nav-links">
           <li>
             <button className="link-btn" onMouseOver={displaySubmenu}>
-              product
+              products
             </button>
           </li>
           <li>
