@@ -28,9 +28,21 @@ const AppProvider = ({ children }) => {
     dispatch({ type: "REMOVE", payload: id });
   };
 
+  /* increase */
+  const increase = (id) => {
+    dispatch({ type: "INCREASE", payload: id });
+  };
+
+  /* decrease */
+  const decrease = (id) => {
+    dispatch({ type: "DECREASE", payload: id });
+  };
+
   /* s4: pass initial state to Global Context */
   return (
-    <AppContext.Provider value={{ ...state, clearCart, remove }}>
+    <AppContext.Provider
+      value={{ ...state, clearCart, remove, increase, decrease }}
+    >
       {children}
     </AppContext.Provider>
   );
