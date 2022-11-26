@@ -6,13 +6,16 @@ import CartContainer from "./draft/14-cart/CartContainer";
 // items
 
 function App() {
-  // if (loading) {
-  //   return (
-  //     <div className='loading'>
-  //       <h1>Loading...</h1>
-  //     </div>
-  //   )
-  // }
+  /* s6: add loading state */
+  const { loading } = useGlobalContext();
+
+  if (loading) {
+    return (
+      <div className="loading">
+        <h1>Loading...</h1>
+      </div>
+    );
+  }
   return (
     <main>
       <Navbar />
