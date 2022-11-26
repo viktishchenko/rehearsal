@@ -3,7 +3,7 @@ import { useGlobalContext } from "./context";
 
 const CartContainer = () => {
   /* s7: add total summ */
-  const { cart, total } = useGlobalContext();
+  const { cart, total, clearCart } = useGlobalContext();
 
   if (cart.length === 0) {
     return (
@@ -36,10 +36,7 @@ const CartContainer = () => {
             total <span>${total}</span>
           </h4>
         </div>
-        <button
-          className="btn clear-btn"
-          onClick={() => console.log("clear cart")}
-        >
+        <button className="btn clear-btn" onClick={clearCart}>
           clear cart
         </button>
       </footer>

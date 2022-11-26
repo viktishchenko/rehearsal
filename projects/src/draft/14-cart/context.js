@@ -18,9 +18,16 @@ const AppProvider = ({ children }) => {
   /* s3: add reducer & initial state */
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  /* s8: add clear cart func w action */
+  const clearCart = () => {
+    dispatch({ type: "CLEAR_CART" });
+  };
+
   /* s4: pass initial state to Global Context */
   return (
-    <AppContext.Provider value={{ ...state }}>{children}</AppContext.Provider>
+    <AppContext.Provider value={{ ...state, clearCart }}>
+      {children}
+    </AppContext.Provider>
   );
 };
 // make sure use
