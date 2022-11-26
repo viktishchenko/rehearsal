@@ -23,9 +23,14 @@ const AppProvider = ({ children }) => {
     dispatch({ type: "CLEAR_CART" });
   };
 
+  /* remove single item */
+  const remove = (id) => {
+    dispatch({ type: "REMOVE", payload: id });
+  };
+
   /* s4: pass initial state to Global Context */
   return (
-    <AppContext.Provider value={{ ...state, clearCart }}>
+    <AppContext.Provider value={{ ...state, clearCart, remove }}>
       {children}
     </AppContext.Provider>
   );
