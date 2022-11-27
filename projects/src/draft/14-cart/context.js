@@ -38,6 +38,10 @@ const AppProvider = ({ children }) => {
     dispatch({ type: "DECREASE", payload: id });
   };
 
+  useEffect(() => {
+    dispatch({ type: "GET_TOTALS" });
+  }, [state.cart]);
+
   /* s4: pass initial state to Global Context */
   return (
     <AppContext.Provider
