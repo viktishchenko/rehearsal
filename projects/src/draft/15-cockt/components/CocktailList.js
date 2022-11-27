@@ -17,6 +17,8 @@ const CocktailList = () => {
     );
   }
 
+  console.log("cocktails>>", cocktails);
+
   return <div>CocktailList</div>;
 };
 
