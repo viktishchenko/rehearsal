@@ -1,24 +1,8 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-/* pages */
-import Home from "./draft/15-cockt/page/Home";
-import About from "./draft/15-cockt/page/About";
-import NotFound from "./draft/15-cockt/page/NotFound";
-import SingleCocktail from "./draft/15-cockt/page/SingleCocktail";
-/* components */
-import Navbar from "./draft/15-cockt/components/Navbar";
+import { useState } from "react";
+import ReactMarkdown from "react-markdown";
 
 function App() {
-  return (
-    <BrowserRouter>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/cocktail/:id" element={<SingleCocktail />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </BrowserRouter>
-  );
+  return <h2>markdown preview</h2>;
 }
 
 export default App;
