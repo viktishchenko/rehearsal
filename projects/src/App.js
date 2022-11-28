@@ -10,7 +10,7 @@ import {
 
 const url = "https://randomuser.me/api/";
 
-const defaultImage = "https://randomuser.me/api/portraits/men/75.jpg";
+const defaultImage = "https://randomuser.me/api/portraits/women/8.jpg";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -24,7 +24,23 @@ function App() {
     console.log(e.target);
   };
 
-  return <h2>random user starter</h2>;
+  console.log("typeof person>>", typeof person);
+
+  return (
+    <main>
+      <div className="block bcg-black"></div>
+      <div className="block">
+        <div className="container">
+          {/* showcase && || operator */}
+          <img
+            src={(person && person.image) || defaultImage}
+            alt="random user"
+            className="user-img"
+          />
+        </div>
+      </div>
+    </main>
+  );
 }
 
 export default App;
