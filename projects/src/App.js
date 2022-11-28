@@ -1,22 +1,19 @@
-import { useState } from "react";
-import ReactMarkdown from "react-markdown";
+import { useState, useEffect } from "react";
+import {
+  FaEnvelopeOpen,
+  FaUser,
+  FaCalendarTimes,
+  FaMap,
+  FaPhone,
+  FaLock,
+} from "react-icons/fa";
+
+const url = "https://randomuser.me/api/";
+
+const defaultImage = "https://randomuser.me/api/portraits/men/75.jpg";
 
 function App() {
-  const [markdown, setMarkdown] = useState("## markdown preview");
-  return (
-    <section className="markdown">
-      <textarea
-        className="input"
-        value={markdown}
-        onChange={(e) => {
-          setMarkdown(e.target.value);
-        }}
-      ></textarea>
-      <article className="result">
-        <ReactMarkdown>{markdown}</ReactMarkdown>
-      </article>
-    </section>
-  );
+  return <h2>random user starter</h2>;
 }
 
 export default App;
