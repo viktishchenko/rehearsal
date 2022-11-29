@@ -34,7 +34,7 @@ function App() {
               return (
                 <button
                   key={idx}
-                  className="page-btn"
+                  className={`page-btn ${idx === page ? "active-btn" : null}`}
                   onClick={() => {
                     handlePage(idx);
                   }}
