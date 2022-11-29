@@ -1,4 +1,4 @@
-const Flower = ({ avatar_url, html_url, login }) => {
+const Follower = ({ avatar_url, html_url, login }) => {
   return (
     <article className="card">
       <img src={avatar_url} alt={login} />
@@ -10,4 +10,4 @@ const Flower = ({ avatar_url, html_url, login }) => {
   );
 };
 
-export default Flower;
+export default Follower;
