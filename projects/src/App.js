@@ -4,7 +4,6 @@ import Follower from "./draft/18-pagination/Flower";
 
 function App() {
   const { loading, data } = useFetch();
-  console.log("loading,data>>", loading, data);
 
   return (
     <main>
