@@ -12,14 +12,33 @@ function App() {
     setFollowers(data[page]);
   }, [loading, page]);
 
-  const handlePage = (idx) => {
-    setPage(idx);
+  const nextPage = () => {
+    setPage((oldPage) => {
+      let nextPage = oldPage + 1;
+      if (nextPage > data.length - 1) {
+        nextPage = 0;
+      }
+      return nextPage;
+    });
+  };
+  const prevPage = () => {
+    setPage((oldPage) => {
+      let prevPage = oldPage - 1;
+      if (prevPage < 0) {
+        prevPage = data.length - 1;
+      }
+      return prevPage;
+    });
+  };
+
+  const handlePage = (index) => {
+    setPage(index);
   };
 
   return (
     <main>
       <div className="section-title">
-        <h1>{loading ? "loading..." : "pagination project"}</h1>
+        <h1>{loading ? "loading..." : "pagination"}</h1>
         <div className="underline"></div>
       </div>
       <section className="followers">
@@ -30,19 +49,23 @@ function App() {
         </div>
         {!loading && (
           <div className="btn-container">
+            <button className="prev-btn" onClick={prevPage}>
+              prev
+            </button>
             {data.map((item, idx) => {
               return (
                 <button
                   key={idx}
                   className={`page-btn ${idx === page ? "active-btn" : null}`}
-                  onClick={() => {
-                    handlePage(idx);
-                  }}
+                  onClick={() => handlePage(idx)}
                 >
                   {idx + 1}
                 </button>
               );
             })}
+            <button className="next-btn" onClick={nextPage}>
+              next
+            </button>
           </div>
         )}
       </section>
