@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./draft/17-random/css/index.css";
+import "./draft/18-pagination/css/index.css";
 import App from "./App";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
