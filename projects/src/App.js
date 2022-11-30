@@ -29,6 +29,24 @@ function App() {
     fetchImages();
   }, []);
 
+  useEffect(() => {
+    const event = window.addEventListener("scroll", () => {
+      /*       console.log(`innerHight, ${window.innerHeight}`);
+      console.log(`scrollY, ${window.scrollY}`);
+      console.log(`bodyHight, ${document.body.scrollHeight}`); */
+      if (
+        !loading &&
+        window.innerHeight + window.scrollY >= document.body.scrollHeight - 10
+      ) {
+        console.log("its time to fetching...>>");
+      }
+    });
+
+    return () => {
+      window.removeEventListener("scroll", event);
+    };
+  }, []);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("halo");
