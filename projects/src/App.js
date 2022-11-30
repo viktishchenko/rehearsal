@@ -17,7 +17,8 @@ function App() {
     try {
       const response = await fetch(url);
       const data = await response.json();
-      console.log("data>>", data);
+      setPhotos(data);
+      setLoading(false);
     } catch (error) {
       setLoading(false);
       console.log(error);
@@ -28,11 +29,31 @@ function App() {
     fetchImages();
   }, []);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("halo");
+  };
+
   return (
-    <>
-      <h2>stock project</h2>
-      <Photo />
-    </>
+    <main>
+      <section className="search">
+        <form className="search-form">
+          <input type="text" placeholder="search" className="form-input" />
+          <button type="submit" className="submit-btn" onClick={handleSubmit}>
+            <FaSearch />
+          </button>
+        </form>
+      </section>
+      <section className="photos">
+        <div className="photos-center">
+          {photos.map((item) => {
+            return <Photo key={item.id} {...item} />;
+          })}
+        </div>
+        {/* infinite scroll loading title */}
+        {loading && <h2 className="loading">Loading</h2>}
+      </section>
+    </main>
   );
 }
 
