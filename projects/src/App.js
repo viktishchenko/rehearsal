@@ -9,15 +9,21 @@ const clientID = `?client_id=${process.env.REACT_APP_19_ACCESS_KEY}`;
 function App() {
   const [loading, setLoading] = useState(false);
   const [photos, setPhotos] = useState([]);
+  const [page, setPage] = useState(1);
 
   const fetchImages = async () => {
     setLoading(true);
     let url;
-    url = `${mainUrl}${clientID}`;
+    const urlPage = `&page=${page}`;
+    url = `${mainUrl}${clientID}${urlPage}`;
+    console.log("url>>", url);
     try {
       const response = await fetch(url);
       const data = await response.json();
-      setPhotos(data);
+      /* save current data array, get new */
+      setPhotos((allCurrentPhotos) => {
+        return [...allCurrentPhotos, ...data];
+      });
       setLoading(false);
     } catch (error) {
       setLoading(false);
@@ -27,21 +33,21 @@ function App() {
 
   useEffect(() => {
     fetchImages();
-  }, []);
+  }, [page]);
+
+  const event = () => {
+    if (
+      window.innerHeight + window.scrollY >=
+      document.body.scrollHeight - 50
+    ) {
+      setPage((currentPage) => {
+        return currentPage + 1;
+      });
+    }
+  };
 
   useEffect(() => {
-    const event = window.addEventListener("scroll", () => {
-      /*       console.log(`innerHight, ${window.innerHeight}`);
-      console.log(`scrollY, ${window.scrollY}`);
-      console.log(`bodyHight, ${document.body.scrollHeight}`); */
-      if (
-        !loading &&
-        window.innerHeight + window.scrollY >= document.body.scrollHeight - 10
-      ) {
-        console.log("its time to fetching...>>");
-      }
-    });
-
+    window.addEventListener("scroll", event);
     return () => {
       window.removeEventListener("scroll", event);
     };
