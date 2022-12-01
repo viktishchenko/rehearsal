@@ -1,11 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./draft/20-mode/css/index.css";
+import "./draft/21-movie/css/index.css";
 import App from "./App";
+import { AppProvider } from "./draft/21-movie/context";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <AppProvider>
+      <App />
+    </AppProvider>
   </React.StrictMode>
 );
