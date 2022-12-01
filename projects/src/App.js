@@ -7,10 +7,17 @@ import Article from "./draft/20-mode/Article.js";
 
 function App() {
   return (
-    <>
-      <h2>dark mode starter</h2>
-      <Article />
-    </>
+    <main>
+      <nav className="nav-center">
+        <h1>overreacted</h1>
+        <button className="btn">toggle</button>
+      </nav>
+      <section className="articles">
+        {data.map((item) => {
+          return <Article key={item.id} {...item} />;
+        })}
+      </section>
+    </main>
   );
 }
 
