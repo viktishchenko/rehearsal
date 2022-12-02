@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect, useReducer } from "react";
 
 import {
   SET_LOADING,
@@ -16,6 +16,8 @@ const initialState = {};
 const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
   return <AppContext.Provider value="halo">{children}</AppContext.Provider>;
 };
 
