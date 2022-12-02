@@ -16,7 +16,7 @@ const initialState = {
   hits: [],
   query: "react",
   page: 0,
-  nbPage: 0,
+  nbPages: 0,
 };
 
 const AppContext = React.createContext();
@@ -30,6 +30,10 @@ const AppProvider = ({ children }) => {
       const response = await fetch(url);
       const data = await response.json();
       console.log("data>>", data);
+      dispatch({
+        type: SET_STORIES,
+        payload: { hits: data.hits, nbPages: data.nbPages },
+      });
     } catch (error) {
       console.log(error);
     }
