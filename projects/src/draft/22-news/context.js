@@ -11,14 +11,26 @@ import reducer from "./reducer";
 
 const API_ENDPOINT = "http://hn.algolia.com/api/v1/search?";
 
-const initialState = {};
+const initialState = {
+  isLoading: true,
+};
 
 const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  return <AppContext.Provider value="halo">{children}</AppContext.Provider>;
+  const fetchStories = () => {
+    dispatch({ type: "SET_LOADING" });
+  };
+
+  useEffect(() => {
+    fetchStories();
+  }, []);
+
+  return (
+    <AppContext.Provider value={{ ...state }}>{children}</AppContext.Provider>
+  );
 };
 
 // custom useContext hook
