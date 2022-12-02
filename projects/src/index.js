@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./draft/21-movie/css/index.css";
+import "./draft/22-news/css/index.css";
 import App from "./App";
-import { AppProvider } from "./draft/21-movie/context";
+import { AppProvider } from "./draft/22-news/context";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

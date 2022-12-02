@@ -2,8 +2,6 @@ import React, { useState, useContext, useEffect } from "react";
 
 import useFetch from "./useFetch";
 
-export const API_ENDPOINT = `https://www.omdbapi.com/?apikey=${process.env.REACT_APP_21_MOVIE_API_KEY}`;
-
 const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {

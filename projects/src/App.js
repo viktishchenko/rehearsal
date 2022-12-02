@@ -1,19 +1,9 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-
-import Home from "./draft/21-movie/Home";
-import SingleMovie from "./draft/21-movie/SingleMovie";
-import NotFound from "./draft/21-movie/NotFound";
+import SearchForm from "./draft/22-news/SearchForm";
+import Stories from "./draft/22-news/Stories";
+import Button from "./draft/22-news/Button";
 
 function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/movies/:id" element={<SingleMovie />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </BrowserRouter>
-  );
+  return <h2>news project starter</h2>;
 }
 
 export default App;
