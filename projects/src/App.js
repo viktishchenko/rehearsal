@@ -1,14 +1,14 @@
-import SearchForm from "./draft/22-news/SearchForm";
-import Stories from "./draft/22-news/Stories";
-import Button from "./draft/22-news/Button";
+import SetupForm from "./draft/23-quiz/SetupForm";
+import Loading from "./draft/23-quiz/Loading";
+import Modal from "./draft/23-quiz/Modal";
 
 function App() {
   return (
     <>
-      <h2>news project starter</h2>
-      <SearchForm />
-      <Button />
-      <Stories />
+      <h2>quiz project</h2>
+      <SetupForm />
+      {/* <Loading /> */}
+      <Modal />
     </>
   );
 }
