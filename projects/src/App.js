@@ -23,7 +23,17 @@ function App() {
   }
 
   const { correct_answer, question, incorrect_answers } = questions[index];
-  const answers = [...incorrect_answers, correct_answer];
+  console.log("correct_answer>>", correct_answer);
+
+  let answers = [...incorrect_answers];
+  let random = Math.floor(Math.random() * 4);
+  if (random === 3) {
+    answers.push(correct_answer);
+  } else {
+    answers.push(answers[random]);
+    answers[random] = correct_answer;
+  }
+
   return (
     <main>
       <Modal />
