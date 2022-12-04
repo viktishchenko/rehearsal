@@ -4,8 +4,15 @@ import Modal from "./draft/23-quiz/Modal";
 import { useGlobalContext } from "./draft/23-quiz/context";
 
 function App() {
-  const { waiting, loading, questions, index, correct, nextQuestion } =
-    useGlobalContext();
+  const {
+    waiting,
+    loading,
+    questions,
+    index,
+    correct,
+    nextQuestion,
+    checkAnswer,
+  } = useGlobalContext();
 
   if (waiting) {
     return <SetupForm />;
@@ -33,6 +40,9 @@ function App() {
                   key={idx}
                   className="answer-btn"
                   dangerouslySetInnerHTML={{ __html: answer }}
+                  onClick={() => {
+                    checkAnswer(correct_answer === answer);
+                  }}
                 />
               );
             })}
