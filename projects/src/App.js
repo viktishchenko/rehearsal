@@ -4,7 +4,8 @@ import Modal from "./draft/23-quiz/Modal";
 import { useGlobalContext } from "./draft/23-quiz/context";
 
 function App() {
-  const { waiting, loading, questions, index, correct } = useGlobalContext();
+  const { waiting, loading, questions, index, correct, nextQuestion } =
+    useGlobalContext();
 
   if (waiting) {
     return <SetupForm />;
@@ -37,7 +38,9 @@ function App() {
             })}
           </div>
         </article>
-        <button className="next-question">next question</button>
+        <button className="next-question" onClick={nextQuestion}>
+          next question
+        </button>
       </section>
     </main>
   );
