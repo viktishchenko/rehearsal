@@ -18,48 +18,34 @@ import FusionTheme from "fusioncharts/themes/fusioncharts.theme.fusion";
 ReactFC.fcRoot(FusionCharts, Chart, FusionTheme);
 
 // STEP 2 - Chart Data
-const chartData = [
-  {
-    label: "HTML",
-    value: "12",
-  },
-  {
-    label: "CSS",
-    value: "19",
-  },
-  {
-    label: "JAVASCRIPT",
-    value: "180",
-  },
-];
 
 // STEP 3 - Creating the JSON object to store the chart configurations
-const chartConfigs = {
-  type: "column2d", // The chart type
-  width: "400", // Width of the chart
-  height: "400", // Height of the chart
-  dataFormat: "json", // Data type
-  dataSource: {
-    // Chart Configuration
-    chart: {
-      //Set the chart caption
-      caption: "Test charts [2021-22]",
-      //Set the chart subcaption
-      subCaption: "Жульен курица гора",
-      //Set the x-axis name
-      xAxisName: "Languages",
-      //Set the y-axis name
-      yAxisName: "Примыканием (фрр)",
-      numberSuffix: "K",
-      //Set the theme for your chart
-      theme: "fusion",
-    },
-    // Chart Data
-    data: chartData,
-  },
-};
 
-const chartComponent = () => {
+const chartComponent = ({ data }) => {
+  const chartConfigs = {
+    type: "column2d", // The chart type
+    width: "400", // Width of the chart
+    height: "400", // Height of the chart
+    dataFormat: "json", // Data type
+    dataSource: {
+      // Chart Configuration
+      chart: {
+        //Set the chart caption
+        caption: "Test charts [2021-22]",
+        //Set the chart subcaption
+        subCaption: "Жульен курица гора",
+        //Set the x-axis name
+        xAxisName: "Languages",
+        //Set the y-axis name
+        yAxisName: "Примыканием (фрр)",
+        numberSuffix: "K",
+        //Set the theme for your chart
+        theme: "fusion",
+      },
+      // Chart Data
+      data,
+    },
+  };
   return <ReactFC {...chartConfigs} />;
 };
 
