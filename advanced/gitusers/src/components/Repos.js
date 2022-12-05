@@ -5,7 +5,20 @@ import { ExampleChart, Pie3D, Column3D, Bar3D, Doughnut2D } from "./Charts";
 
 const Repos = () => {
   const { repos } = React.useContext(GithubContext);
-  console.log("repos>>", repos);
+
+  let languages = repos.reduce((total, item) => {
+    const { language } = item;
+    // if lang === null, return {}
+    if (!language) return total;
+    // if !lang, create lang:1, else lang:++
+    if (!total[language]) {
+      total[language] = 1;
+    } else {
+      total[language] = total[language] + 1;
+    }
+    return total;
+  }, {}); // Object { JavaScript: 45, CSS: 38, HTML: 14 }
+
   const chartData = [
     {
       label: "HTML",
