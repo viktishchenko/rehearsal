@@ -10,14 +10,37 @@ const Repos = () => {
     const { language } = item;
     // if lang === null, return {}
     if (!language) return total;
-    // if !lang, create lang:1, else lang:++
+    // // if !lang, create lang:1, else lang:++ / as object
     if (!total[language]) {
-      total[language] = 1;
+      total[language] = { label: language, value: 1 };
     } else {
-      total[language] = total[language] + 1;
+      total[language] = {
+        ...total[language],
+        value: total[language].value + 1,
+      };
     }
     return total;
-  }, {}); // Object { JavaScript: 45, CSS: 38, HTML: 14 }
+  }, {});
+
+  /* 
+
+    Constract chart data object
+
+  {
+  "JavaScript": {
+    "label": "JavaScript",
+    "value": 45
+  },
+  "CSS": {
+    "label": "CSS",
+    "value": 38
+  },
+  "HTML": {
+    "label": "HTML",
+    "value": 14
+  }
+}
+  */
 
   const chartData = [
     {
