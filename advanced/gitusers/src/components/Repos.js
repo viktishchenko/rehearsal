@@ -13,18 +13,19 @@ const Repos = () => {
     },
     {
       label: "CSS",
-      value: "19",
+      value: "37",
     },
     {
       label: "JAVASCRIPT",
-      value: "180",
+      value: "120",
     },
   ];
 
   return (
     <section className="section">
       <Wrapper className="section-center">
-        <ExampleChart data={chartData} />
+        <Pie3D data={chartData} />
+        {/* <ExampleChart data={chartData} /> */}
       </Wrapper>
     </section>
   );
