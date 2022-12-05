@@ -8,9 +8,7 @@ const Repos = () => {
 
   let languages = repos.reduce((total, item) => {
     const { language } = item;
-    // if lang === null, return {}
     if (!language) return total;
-    // // if !lang, create lang:1, else lang:++ / as object
     if (!total[language]) {
       total[language] = { label: language, value: 1 };
     } else {
@@ -22,24 +20,26 @@ const Repos = () => {
     return total;
   }, {});
 
+  languages = Object.values(languages).sort((a, b) => b.value - a.value);
+  console.log("languages>>", languages);
+
   /* 
-
-    Constract chart data object
-
+ Re-constaruct chart data object, sort by value
+  
+  [
   {
-  "JavaScript": {
     "label": "JavaScript",
     "value": 45
   },
-  "CSS": {
+  {
     "label": "CSS",
     "value": 38
   },
-  "HTML": {
+  {
     "label": "HTML",
     "value": 14
   }
-}
+]
   */
 
   const chartData = [
