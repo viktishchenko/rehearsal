@@ -3,7 +3,15 @@ import loadingImage from "../images/preloader.gif";
 import { GithubContext } from "../context/context";
 
 const Dashboard = () => {
-  return <div>Dashboard</div>;
+  return (
+    <main>
+      <Navbar></Navbar>
+      <Search />
+      <Info />
+      <User />
+      <Repos />
+    </main>
+  );
 };
 
 export default Dashboard;
