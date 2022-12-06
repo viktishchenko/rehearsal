@@ -16,6 +16,7 @@ const GithubProvider = ({ children }) => {
   // request loading
   const [requests, setRequests] = useState(0);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState({ show: false, msg: "" });
 
   // check rate
   const checkRequests = () => {
@@ -26,7 +27,7 @@ const GithubProvider = ({ children }) => {
         } = data;
         setRequests(remaining);
         if (remaining === 0) {
-          // throw an error
+          toggleError(true, "sorry, you have exeeded your hourly rate limit");
         }
       })
       .catch((err) => {
@@ -34,14 +35,18 @@ const GithubProvider = ({ children }) => {
       });
   };
 
-  // error
+  function toggleError(show = false, msg = "") {
+    setError({ show, msg });
+  }
 
   useEffect(() => {
     // checkRequests();
   }, []);
 
   return (
-    <GithubContext.Provider value={{ githubUser, repos, followers, requests }}>
+    <GithubContext.Provider
+      value={{ githubUser, repos, followers, requests, error }}
+    >
       {children}
     </GithubContext.Provider>
   );
