@@ -20,48 +20,14 @@ const Repos = () => {
     return total;
   }, {});
 
-  languages = Object.values(languages).sort((a, b) => b.value - a.value);
-  console.log("languages>>", languages);
-
-  /* 
- Re-constaruct chart data object, sort by value
-  
-  [
-  {
-    "label": "JavaScript",
-    "value": 45
-  },
-  {
-    "label": "CSS",
-    "value": 38
-  },
-  {
-    "label": "HTML",
-    "value": 14
-  }
-]
-  */
-
-  const chartData = [
-    {
-      label: "HTML",
-      value: "12",
-    },
-    {
-      label: "CSS",
-      value: "37",
-    },
-    {
-      label: "JAVASCRIPT",
-      value: "120",
-    },
-  ];
+  languages = Object.values(languages)
+    .sort((a, b) => b.value - a.value)
+    .slice(0, 5);
 
   return (
     <section className="section">
       <Wrapper className="section-center">
-        <Pie3D data={chartData} />
-        {/* <ExampleChart data={chartData} /> */}
+        <Pie3D data={languages} />
       </Wrapper>
     </section>
   );
