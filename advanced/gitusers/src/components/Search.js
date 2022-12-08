@@ -6,13 +6,14 @@ import { useState } from "react";
 
 const Search = () => {
   const [user, setUser] = useState("");
-  const { requests, error, searchGithubUser } = React.useContext(GithubContext);
+  const { requests, error, searchGithubUser, isLoading } =
+    React.useContext(GithubContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (user) {
       searchGithubUser(user);
-      // setUser("");
+      setUser("");
     }
   };
 
@@ -35,7 +36,9 @@ const Search = () => {
                 setUser(e.target.value);
               }}
             />
-            {requests > 0 && <button type="submit">search</button>}
+            {requests > 0 && !isLoading && (
+              <button type="submit">search</button>
+            )}
           </div>
         </form>
         <h3>requests: {requests} / 60</h3>
@@ -69,6 +72,7 @@ const Wrapper = styled.div`
       letter-spacing: var(--spacing);
       color: var(--clr-grey-3);
       padding: 0.25rem 0.5rem;
+      width: 100%;
     }
     input::placeholder {
       color: var(--clr-grey-3);
