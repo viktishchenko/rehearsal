@@ -28,13 +28,75 @@ const GithubProvider = ({ children }) => {
     if (response) {
       setGithuUser(response.data);
       const { login, followers_url } = response.data;
-      // repos
-      const reposUrl = `${rootUrl}/users/${login}/repos?per_page=100`;
-      axios(reposUrl).then((response) => setRepos(response.data));
-      // followers
-      axios(`${followers_url}?per_page=100`).then((response) =>
-        setFollowers(response.data)
-      );
+
+      await Promise.allSettled([
+        axios(`${rootUrl}/users/${login}/repos?per_page=100`),
+        axios(`${followers_url}?per_page=100`),
+      ])
+        .then((res) => {
+          /* 
+          console.log("res>>", res);
+
+            res>> 
+            Array [ {…}, {…} ]
+            ​
+            0: Object { status: "fulfilled", value: {…} }
+            ​​
+            status: "fulfilled"
+            ​​
+            value: Object { data: (100) […], status: 200, statusText: "OK", … }
+            ​​
+            <prototype>: Object { … }
+            ​
+            1: Object { status: "fulfilled", value: {…} }
+            ​
+            length: 2
+            ​
+            <prototype>: Array []
+            context.js:38
+
+        */
+          const [repos, followers] = res;
+
+          /* 
+
+          console.log("repos,followers>>", repos, followers);
+
+            repos,followers>> 
+            Object { status: "fulfilled", value: {…} }
+
+            Object { status: "fulfilled", value: {…} }
+            ​
+            status: "fulfilled"
+            ​
+            value: Object { data: (100) […], status: 200, statusText: "OK", … }
+            ​​
+            config: Object { timeout: 0, xsrfCookieName: "XSRF-TOKEN", xsrfHeaderName: "X-XSRF-TOKEN", … }
+            ​​
+            data: Array(100) [ {…}, {…}, {…}, … ]
+            ​​
+            headers: Object { "cache-control": "public, max-age=60, s-maxage=60", "content-type": "application/json; charset=utf-8", etag: "W/\"9fcd0745a75b6a6e04328b3fd47dc8fc407b128bbf59a733b82e06369c155980\"", … }
+            ​​
+            request: XMLHttpRequest { readyState: 4, timeout: 0, withCredentials: false, … }
+            ​​
+            status: 200
+            ​​
+            statusText: "OK"
+            ​​
+            <prototype>: Object { … }        
+        */
+
+          if (repos.status === "fulfilled") {
+            setRepos(repos.value.data);
+          }
+
+          if (followers.status === "fulfilled") {
+            setFollowers(followers.value.data);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     } else {
       toggleError(true, "there is no user with that username");
     }
