@@ -129,6 +129,12 @@ const GithubProvider = ({ children }) => {
     checkRequests();
   }, []);
 
+  const loginWithGithub = () => {
+    window.location.assign(
+      `https://github.com/login/oauth/authorize?client_id=${process.env.REACT_APP_GIHUB_SEARCH_USER_ID}`
+    );
+  };
+
   return (
     <GithubContext.Provider
       value={{
@@ -139,6 +145,7 @@ const GithubProvider = ({ children }) => {
         error,
         searchGithubUser,
         isLoading,
+        loginWithGithub,
       }}
     >
       {children}

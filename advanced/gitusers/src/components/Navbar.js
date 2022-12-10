@@ -1,7 +1,15 @@
+import React from "react";
 import styled from "styled-components";
+import { GithubContext } from "../context/context";
 
 const Navbar = () => {
-  return <Wrapper>navbar component</Wrapper>;
+  const { loginWithGithub } = React.useContext(GithubContext);
+
+  return (
+    <Wrapper>
+      <button onClick={loginWithGithub}>LOGIN WITH GITHUB</button>
+    </Wrapper>
+  );
 };
 
 const Wrapper = styled.nav`
