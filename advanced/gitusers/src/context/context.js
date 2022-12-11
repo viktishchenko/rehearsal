@@ -121,12 +121,23 @@ const GithubProvider = ({ children }) => {
       });
   };
 
+  const getLoginCode = () => {
+    /* Web APIs Location
+      http://localhost:3000/?code=aa156a7a4791b72b101a
+    */
+    const queryString = window.location.search; // "?code=aa156a7a4791b72b101a"
+    const urlParams = new URLSearchParams(queryString); // { code → "aa156a7a4791b72b101a" }
+    const codeParam = urlParams.get("code"); // "aa156a7a4791b72b101a"
+    console.log("codeParam>>", codeParam);
+  };
+
   function toggleError(show = false, msg = "") {
     setError({ show, msg });
   }
 
   useEffect(() => {
     checkRequests();
+    getLoginCode(); // codeParam>> aa156a7a4791b72b101a
   }, []);
 
   const loginWithGithub = () => {
