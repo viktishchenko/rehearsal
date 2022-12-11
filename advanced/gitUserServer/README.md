@@ -6,5 +6,6 @@
 npm init -y
 npm i express nodemon
 npm i dotenv cors
+npm i node-fetch
 
 ```
