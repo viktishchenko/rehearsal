@@ -9,6 +9,8 @@ import jwt from "jsonwebtoken";
 
 const app = express();
 
+const COOKIE_NAME = "github-jwt";
+
 app.use(express.json());
 app.use(cors());
 
@@ -83,7 +85,7 @@ app.get("/api/auth/github", async (req, res) => {
 
   const token = jwt.sign(gitHubUser, process.env.GIHUB_SEARCH_APP_TOKEN_SECRET);
 
-  res.cookie("github-jwt", token, {
+  res.cookie(COOKIE_NAME, token, {
     httpOnly: true,
     domain: "localhost",
   });
@@ -91,6 +93,21 @@ app.get("/api/auth/github", async (req, res) => {
   res.redirect(
     `process.env.${process.env.GIHUB_SEARCH_APP_DOMAIN}${getLoginPath}`
   );
+});
+
+app.get("/api/user", (req, res) => {
+  const cookie = req.cookies(COOKIE_NAME);
+
+  try {
+    const decode = jwt.verify(
+      cookie,
+      process.env.GIHUB_SEARCH_APP_TOKEN_SECRET
+    );
+
+    return res.send(decode);
+  } catch (error) {
+    res.send(null);
+  }
 });
 
 app.listen(4000, () => {
