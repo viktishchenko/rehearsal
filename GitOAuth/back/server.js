@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 import querystring from "querystring";
+import jwt from "jsonwebtoken";
 
 const app = express();
 
@@ -77,13 +78,20 @@ app.get("/api/auth/github", async (req, res) => {
 
   for typescript purposes:
   → app.quicktype.io/?l=ts → get obj type
-  */
   console.log(JSON.stringify(gitHubUser)); // copy it!
+  */
 
-  res.redirect(`http://localhost:3000${getLoginPath}`);
+  const token = jwt.sign(gitHubUser, process.env.GIHUB_SEARCH_APP_TOKEN_SECRET);
+
+  res.cookie("github-jwt", token, {
+    httpOnly: true,
+    domain: "localhost",
+  });
+
+  res.redirect(
+    `process.env.${process.env.GIHUB_SEARCH_APP_DOMAIN}${getLoginPath}`
+  );
 });
-
-// http://localhost:4000/api/auth/github?path=/&code=6bd75a8146bb0ebeb65e
 
 app.listen(4000, () => {
   console.log("Server is listening...");
