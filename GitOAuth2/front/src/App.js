@@ -1,32 +1,77 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
-/* 
-  GET https://github.com/login/oauth/authorize?client_id=
-  POST https://github.com/login/oauth/access_token?client_id=&client_secret=&code=
-  Authorization: Bearer OAUTH-TOKEN
-  GET https://api.github.com/user
-*/
 function App() {
-  useEffect(() => {
-    // http://localhost:3000/?code=bb037bcff753f810f546
+  const [render, setRender] = useState(false);
+  const [user, setUser] = useState();
 
+  useEffect(() => {
     const queryString = window.location.search; // >> ?code=f360a608933a3bc4a9ea
     const urlParam = new URLSearchParams(queryString); // >> { code → "f360a608933a3bc4a9ea" }
-    const codeParser = urlParam.get("code"); // >> 5b227ee63883465e3ccf
-  }, []);
+    const codeParam = urlParam.get("code"); // >> 5b227ee63883465e3ccf
+    console.log(codeParam);
+
+    if (codeParam && localStorage.getItem("accessToken") === null) {
+      async function getAccessToken() {
+        await fetch(`http://localhost:4000/getAccessToken?code=${codeParam}`, {
+          method: "GET",
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data);
+            if (data.access_token) {
+              localStorage.setItem("accessToken", data.access_token);
+              setRender(!render);
+            }
+          });
+      }
+      getAccessToken();
+    }
+
+    async function getUserData() {
+      await fetch(`http://localhost:4000/getUserData`, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("dataFin>>", data);
+          setUser(data);
+        });
+    }
+    getUserData();
+  }, [render]);
 
   const loginWithGithub = () => {
     window.location.assign(
       `https://github.com/login/oauth/authorize?client_id=${process.env.REACT_APP_GIHUB_SEARCH_USER_ID}`
     );
-    console.log("halo");
   };
 
   return (
     <div className="App">
-      <button className="login" onClick={loginWithGithub}>
-        login with github
-      </button>
+      {localStorage.getItem("accessToken") && user ? (
+        <>
+          <h3>Welcom, {user.login}</h3>
+          <button
+            className="login"
+            onClick={() => {
+              localStorage.removeItem("accessToken");
+              setRender(!render);
+            }}
+          >
+            log out
+          </button>
+        </>
+      ) : (
+        <>
+          <h3>User is not logged in</h3>
+          <button className="login" onClick={loginWithGithub}>
+            login with github
+          </button>
+        </>
+      )}
     </div>
   );
 }
