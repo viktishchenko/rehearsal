@@ -18,6 +18,10 @@ const GithubProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState({ show: false, msg: "" });
 
+  // github API
+  const [gitUser, setGitUser] = useState();
+  const [render, setRender] = useState(false);
+
   const searchGithubUser = async (user) => {
     toggleError();
     setIsLoading(true);
@@ -121,15 +125,15 @@ const GithubProvider = ({ children }) => {
       });
   };
 
-  const getLoginCode = () => {
-    /* Web APIs Location
-      http://localhost:3000/?code=aa156a7a4791b72b101a
-    */
-    const queryString = window.location.search; // "?code=aa156a7a4791b72b101a"
-    const urlParams = new URLSearchParams(queryString); // { code → "aa156a7a4791b72b101a" }
-    const codeParam = urlParams.get("code"); // "aa156a7a4791b72b101a"
-    console.log("codeParam>>", codeParam);
-  };
+  // const getLoginCode = () => {
+  //   /* Web APIs Location
+  //     http://localhost:3000/?code=aa156a7a4791b72b101a
+  //   */
+  //   const queryString = window.location.search; // "?code=aa156a7a4791b72b101a"
+  //   const urlParams = new URLSearchParams(queryString); // { code → "aa156a7a4791b72b101a" }
+  //   const codeParam = urlParams.get("code"); // "aa156a7a4791b72b101a"
+  //   console.log("codeParam>>", codeParam);
+  // };
 
   function toggleError(show = false, msg = "") {
     setError({ show, msg });
@@ -137,14 +141,73 @@ const GithubProvider = ({ children }) => {
 
   useEffect(() => {
     checkRequests();
-    getLoginCode(); // codeParam>> aa156a7a4791b72b101a
+    // getLoginCode(); // codeParam>> aa156a7a4791b72b101a
   }, []);
+
+  useEffect(() => {
+    const queryString = window.location.search; // >> ?code=f360a608933a3bc4a9ea
+    const urlParam = new URLSearchParams(queryString); // >> { code → "f360a608933a3bc4a9ea" }
+    const codeParam = urlParam.get("code"); // >> 5b227ee63883465e3ccf
+    console.log("codeParam>>", codeParam);
+
+    if (codeParam && localStorage.getItem("accessToken") === null) {
+      async function getAccessToken() {
+        await fetch(`http://localhost:4000/getAccessToken?code=${codeParam}`, {
+          method: "GET",
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("dataFirst", data);
+            if (data.access_token) {
+              localStorage.setItem("accessToken", data.access_token);
+              setRender(!render);
+            }
+          });
+      }
+      getAccessToken();
+    }
+
+    async function getUserData() {
+      await fetch(`http://localhost:4000/getUserData`, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("dataFin>>", data);
+          setGitUser(data);
+        });
+    }
+    getUserData();
+
+    function reloadUrl() {
+      console.log("it's work");
+      console.log(Boolean(localStorage.getItem("accessToken")));
+      if (
+        localStorage.getItem("accessToken") &&
+        window.location.search.match("code")
+      ) {
+        console.log("it's work or not");
+        const url = window.location.assign("http://localhost:3000");
+        return url;
+      }
+      return;
+    }
+
+    reloadUrl();
+  }, [render]);
 
   const loginWithGithub = () => {
     window.location.assign(
       `https://github.com/login/oauth/authorize?client_id=${process.env.REACT_APP_GIHUB_SEARCH_USER_ID}`
     );
   };
+  /*     window.location.assign(
+      `https://github.com/login/oauth/authorize?client_id=${process.env.REACT_APP_GIHUB_SEARCH_USER_ID}&redirect_uri=${process.env.REACT_APP_GIHUB_SEARCH_REDIRECT_URI}`
+    );
+  }; */
 
   return (
     <GithubContext.Provider

@@ -19,7 +19,7 @@ app.use(cors());
 app.get("/getAccessToken", async (req, res) => {
   const getLoginCode = req.query.code;
   console.log("getLoginCode>>", getLoginCode);
-  const params = `?client_id=${REACT_APP_GIHUB_SEARCH_USER_ID}&client_secret=${REACT_APP_GIHUB_SEARCH_CLIENT_SECRET}&code=${getLoginCode}`;
+  const params = `?client_id=${process.env.GIHUB_SEARCH_USER_ID}&client_secret=${process.env.GIHUB_SEARCH_CLIENT_SECRET}&code=${getLoginCode}`;
   await fetch(`https://github.com/login/oauth/access_token${params}`, {
     method: "POST",
     headers: {

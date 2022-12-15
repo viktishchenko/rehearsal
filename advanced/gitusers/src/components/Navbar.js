@@ -2,12 +2,21 @@ import React from "react";
 import styled from "styled-components";
 import { GithubContext } from "../context/context";
 
+/* 
+data from server:
+OUT
+{IsAuthenticated: false, user: undefined, isLoadding: true}
+IN
+{IsAuthenticated: true, user: {}, isLoadding: false}
+*/
+
 const Navbar = () => {
   const { loginWithGithub } = React.useContext(GithubContext);
 
   return (
     <Wrapper>
-      <button onClick={loginWithGithub}>LOGIN WITH GITHUB</button>
+      <button onClick={loginWithGithub}>LOGIN </button>
+      <button onClick={loginWithGithub}>LOGOUT</button>
     </Wrapper>
   );
 };
