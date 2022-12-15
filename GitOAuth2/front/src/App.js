@@ -41,7 +41,25 @@ function App() {
         });
     }
     getUserData();
+
+    function reloadUrl() {
+      console.log("it's work");
+      console.log(Boolean(localStorage.getItem("accessToken")));
+      if (
+        localStorage.getItem("accessToken") &&
+        window.location.search.match("code")
+      ) {
+        console.log("it's work or not");
+        const url = window.location.assign("http://localhost:3000");
+        return url;
+      }
+      return;
+    }
+
+    reloadUrl();
   }, [render]);
+
+  useEffect(() => {}, []);
 
   const loginWithGithub = () => {
     window.location.assign(
