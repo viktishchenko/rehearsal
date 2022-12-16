@@ -11,12 +11,37 @@ IN
 */
 
 const Navbar = () => {
-  const { loginWithGithub } = React.useContext(GithubContext);
+  const { loginWithGithub, gitUser, isAuthenticated, render, setRender } =
+    React.useContext(GithubContext);
+
+  let isUser = false;
+  if (gitUser && isAuthenticated) {
+    isUser = true;
+  }
 
   return (
     <Wrapper>
-      <button onClick={loginWithGithub}>LOGIN </button>
-      <button onClick={loginWithGithub}>LOGOUT</button>
+      {isUser && gitUser?.avatar_url && (
+        <img src={gitUser.avatar_url} alt={gitUser.login} />
+      )}
+      {isUser && gitUser?.login && (
+        <h4>
+          Welcom, <strong>{gitUser.login.toUpperCase()}</strong>
+        </h4>
+      )}
+
+      {isUser ? (
+        <button
+          onClick={() => {
+            localStorage.removeItem("accessToken");
+            setRender(!render);
+          }}
+        >
+          logout
+        </button>
+      ) : (
+        <button onClick={loginWithGithub}>login with github </button>
+      )}
     </Wrapper>
   );
 };
@@ -32,7 +57,7 @@ const Wrapper = styled.nav`
   align-items: center;
   gap: 1.5rem;
   h4 {
-    margin-bottom: 0;
+    margin: 4px 0 0;
     font-weight: 400;
   }
   img {

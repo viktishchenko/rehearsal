@@ -1,10 +1,5 @@
 import express from "express";
 import cors from "cors";
-/* 
-for commonjs:
-const fetch = (...args) =>
-  import("node-fetch").then(({ default: fetch }) => fetch(...args));
-*/
 import fetch from "node-fetch";
 
 import dotenv from "dotenv";
