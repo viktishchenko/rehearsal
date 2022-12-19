@@ -124,7 +124,7 @@ const GithubProvider = ({ children }) => {
     /* 
       !!! FIX THIS BSHT, REDIRECT FROM BACKEND !!!
       */
-    function reloadUrl() {
+    /*     function reloadUrl() {
       if (
         localStorage.getItem("accessToken") &&
         window.location.search.match("code")
@@ -135,7 +135,7 @@ const GithubProvider = ({ children }) => {
       return;
     }
 
-    reloadUrl();
+    reloadUrl(); */
   }, [render]);
 
   const loginWithGithub = () => {
@@ -143,10 +143,6 @@ const GithubProvider = ({ children }) => {
       `https://github.com/login/oauth/authorize?client_id=${process.env.REACT_APP_GIHUB_SEARCH_USER_ID}`
     );
   };
-  /*     window.location.assign(
-      `https://github.com/login/oauth/authorize?client_id=${process.env.REACT_APP_GIHUB_SEARCH_USER_ID}&redirect_uri=${process.env.REACT_APP_GIHUB_SEARCH_REDIRECT_URI}`
-    ); 
-  }; */
 
   return (
     <GithubContext.Provider

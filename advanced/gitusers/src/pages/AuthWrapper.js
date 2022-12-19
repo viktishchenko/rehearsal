@@ -1,8 +1,20 @@
 import styled from "styled-components";
 import loadingGif from "../images/preloader.gif";
+import { GithubContext } from "../context/context";
+import React from "react";
 
-const AuthWrapper = () => {
-  return <h2>AuthWrapper</h2>;
+const AuthWrapper = ({ children }) => {
+  /*   const { xxx } = React.useContext(GithubContext);
+
+  if (!xxx) {
+    return (
+      <Wrapper>
+        <img src={loadingGif} alt="loader" />
+      </Wrapper>
+    );
+  } */
+
+  return <>{children}</>;
 };
 
 const Wrapper = styled.section`
