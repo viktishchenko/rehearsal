@@ -5,7 +5,7 @@ import { Navbar, Sidebar, Footer } from "./components";
 import {
   Home,
   SingleProduct,
-  Card,
+  Cart,
   Checkout,
   Error,
   About,
@@ -21,7 +21,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
-        <Route path="/card" element={<Card />} />
+        <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/products" element={<Products />} />
         <Route path="/about" element={<About />} />
