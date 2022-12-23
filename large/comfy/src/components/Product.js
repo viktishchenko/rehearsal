@@ -14,7 +14,12 @@ const Product = ({ image, name, price, id }) => {
       </div>
       <footer>
         <h5>{name}</h5>
-        <p>{price}</p>
+        {/* 1. Convert price to cents → {price/100}
+                  OR
+            2. console.log(new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(number));
+            // 123.456,79 €
+        */}
+        <p>{formatPrice(price)}</p>
       </footer>
     </Wrapper>
   );
