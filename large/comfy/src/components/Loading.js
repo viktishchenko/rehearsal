@@ -1,5 +1,5 @@
 const Loading = () => {
-  return <h4>loading element</h4>;
+  return <div className="section section-center">loading...</div>;
 };
 
 export default Loading;

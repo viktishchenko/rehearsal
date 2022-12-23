@@ -47,6 +47,9 @@ export const ProductsProvider = ({ children }) => {
   };
 
   useEffect(() => {
+    /* check error
+    fetchProducts(`${url}s`);
+    */
     fetchProducts(url);
   }, []);
 
