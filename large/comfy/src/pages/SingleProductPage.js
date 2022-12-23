@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useProductsContext } from "../context/products_context";
 import { single_product_url as url } from "../utils/constants";
 import { formatPrice } from "../utils/helpers";
@@ -15,7 +15,40 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 const SingleProductPage = () => {
-  return <h4>single product page</h4>;
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const {
+    single_product: product,
+    single_product_loading: loading,
+    single_product_error: error,
+    fetchSingleProduct,
+  } = useProductsContext();
+
+  useEffect(() => {
+    fetchSingleProduct(`${url}${id}`);
+  }, [id]);
+
+  useEffect(() => {
+    /* redirect if error w dependency, b/c init err = false */
+    console.log("error>>", error);
+    if (error) {
+      setTimeout(() => {
+        navigate("/");
+      }, 5000);
+    }
+  }, [error]);
+
+  // console.log("product>>", product);
+
+  if (loading) {
+    return <Loading />;
+  }
+
+  if (error) {
+    return <Error />;
+  }
+
+  return <Wrapper>{product.name}</Wrapper>;
 };
 
 const Wrapper = styled.main`
