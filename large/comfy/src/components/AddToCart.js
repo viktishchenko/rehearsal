@@ -11,7 +11,7 @@ const AddToCart = ({ product }) => {
   const [mainColor, setMainColor] = useState(colors[0]);
   /*
    */
-  console.log(colors); // Array [ "#000", "#ff0000" ]
+  console.log(colors); // Array(3) [ "#ffb900", "#ff0000", "#00ff00" ]
 
   return (
     <Wrapper>
@@ -22,10 +22,15 @@ const AddToCart = ({ product }) => {
             return (
               <button
                 style={{ background: color }}
-                className="color-btn"
+                className={`${
+                  mainColor === color ? "color-btn active" : "color-btn"
+                }`}
                 key={idx}
+                onClick={() => {
+                  setMainColor(color);
+                }}
               >
-                {idx}
+                {mainColor === color ? <FaCheck /> : null}
               </button>
             );
           })}
