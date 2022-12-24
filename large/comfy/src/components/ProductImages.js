@@ -5,8 +5,6 @@ const ProductImages = ({ images = [{ url: "" }], name }) => {
   /* init images = undefined, to avoid err init props as images=[{url:""}] */
   const [main, setMain] = useState(images[0]);
 
-  console.log("images>>", images);
-  console.log("main>>", main);
   return (
     <Wrapper>
       <img src={main.url} alt={name} className="main" />
@@ -20,6 +18,7 @@ const ProductImages = ({ images = [{ url: "" }], name }) => {
               onClick={() => {
                 setMain(images[idx]);
               }}
+              className={`${image.url === main.url ? "active" : null}`}
             />
           );
         })}
