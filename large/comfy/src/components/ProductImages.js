@@ -6,9 +6,24 @@ const ProductImages = ({ images = [{ url: "" }], name }) => {
   const [main, setMain] = useState(images[0]);
 
   console.log("images>>", images);
+  console.log("main>>", main);
   return (
     <Wrapper>
-      <img src={main.url} alt={name} />
+      <img src={main.url} alt={name} className="main" />
+      <div className="gallery">
+        {images.map((image, idx) => {
+          return (
+            <img
+              key={idx}
+              src={image.url}
+              alt={image.filename}
+              onClick={() => {
+                setMain(images[idx]);
+              }}
+            />
+          );
+        })}
+      </div>
     </Wrapper>
   );
 };
