@@ -10,8 +10,12 @@ const AddToCart = ({ product }) => {
 
   const [mainColor, setMainColor] = useState(colors[0]);
   /*
-   */
   console.log(colors); // Array(3) [ "#ffb900", "#ff0000", "#00ff00" ]
+   */
+  const [amount, setAmount] = useState(1);
+
+  const increase = () => {};
+  const decrease = () => {};
 
   return (
     <Wrapper>
@@ -35,6 +39,16 @@ const AddToCart = ({ product }) => {
             );
           })}
         </div>
+      </div>
+      <div className="btn-container">
+        <AmountButtons
+          increase={increase}
+          decrease={decrease}
+          amount={amount}
+        />
+        <Link to="/cart" className="btn">
+          add to cart
+        </Link>
       </div>
     </Wrapper>
   );
