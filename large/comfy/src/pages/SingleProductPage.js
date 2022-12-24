@@ -29,8 +29,9 @@ const SingleProductPage = () => {
   }, [id]);
 
   useEffect(() => {
-    /* redirect if error w dependency, b/c init err = false */
+    /* redirect if error w dependency, b/c init err = false 
     console.log("error>>", error);
+    */
     if (error) {
       setTimeout(() => {
         navigate("/");
@@ -48,7 +49,23 @@ const SingleProductPage = () => {
     return <Error />;
   }
 
-  return <Wrapper>{product.name}</Wrapper>;
+  const {
+    name,
+    price,
+    description,
+    stock,
+    stars,
+    reviews,
+    id: sku,
+    company,
+    images,
+  } = product;
+
+  return (
+    <Wrapper>
+      <PageHero title={name} product />
+    </Wrapper>
+  );
 };
 
 const Wrapper = styled.main`
