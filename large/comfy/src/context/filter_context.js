@@ -12,11 +12,21 @@ import {
 } from "../actions";
 import { useProductsContext } from "./products_context";
 
-const initialState = {};
+const initialState = {
+  filtered_products: [],
+  all_products: [],
+};
 
 const FilterContext = React.createContext();
 
 export const FilterProvider = ({ children }) => {
+  const { products } = useProductsContext();
+  const [state, dispatch] = useReducer(reducer, initialState);
+  /* inital products is empty arr[], that's why dependency useEffect is [products] */
+  useEffect(() => {
+    dispatch({ type: LOAD_PRODUCTS, payload: products });
+  }, [products]);
+
   return (
     <FilterContext.Provider value="filter context">
       {children}
