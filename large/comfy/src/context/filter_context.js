@@ -28,8 +28,18 @@ export const FilterProvider = ({ children }) => {
     dispatch({ type: LOAD_PRODUCTS, payload: products });
   }, [products]);
 
+  const setGridView = () => {
+    // console.log("grid");
+    dispatch({ type: SET_GRIDVIEW });
+  };
+
+  const setListView = () => {
+    // console.log("list");
+    dispatch({ type: SET_LISTVIEW });
+  };
+
   return (
-    <FilterContext.Provider value={{ ...state }}>
+    <FilterContext.Provider value={{ ...state, setListView, setGridView }}>
       {children}
     </FilterContext.Provider>
   );
