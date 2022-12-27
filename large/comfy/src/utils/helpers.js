@@ -5,4 +5,11 @@ export const formatPrice = (number) => {
   }).format(number / 100);
 };
 
-export const getUniqueValue = () => {};
+export const getUniqueValues = (data, type) => {
+  let unique = data.map((item) => item[type]);
+  /* 
+  console.log("unique>>", unique);
+  Array(23) [ "office", "living room", "kitchen", "bedroom", "dining", "dining", "bedroom", "living room", "office", "bedroom", … ]
+  */
+  return ["all", ...new Set(unique)];
+};
