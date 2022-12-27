@@ -81,6 +81,19 @@ const Filters = () => {
             <h5>colors</h5>
             <div className="colors">
               {colors.map((c, idx) => {
+                if (c === "all") {
+                  return (
+                    <button
+                      key={idx}
+                      name="color"
+                      data-color="all"
+                      onClick={updateFilters}
+                      className={color === "all" ? "all-btn active" : "all-btn"}
+                    >
+                      all
+                    </button>
+                  );
+                }
                 return (
                   <button
                     key={idx}
