@@ -17,7 +17,7 @@ const Filters = () => {
   Array(7) [ "all", "office", "living room", "kitchen", "bedroom", "dining", "kids" ]
   */
   const companies = getUniqueValues(all_products, "company");
-  const colors = getUniqueValues(all_products, "color");
+  const colors = getUniqueValues(all_products, "colors");
 
   return (
     <Wrapper>
