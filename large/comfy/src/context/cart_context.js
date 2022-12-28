@@ -35,13 +35,17 @@ export const CartProvider = ({ children }) => {
   };
 
   // remove item
-  const removeItem = (id) => {};
+  const removeItem = (id) => {
+    dispatch({ type: REMOVE_CART_ITEM, payload: id });
+  };
 
   // toggleAmount
   const toggleAmount = (id, value) => {};
 
   // clearCart
-  const clearCart = () => {};
+  const clearCart = () => {
+    dispatch({ type: CLEAR_CART });
+  };
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(state.cart));
