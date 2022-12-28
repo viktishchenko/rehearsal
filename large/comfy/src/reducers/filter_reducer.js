@@ -72,6 +72,21 @@ const filter_reducer = (state, action) => {
   if (action.type === FILTER_PRODUCTS) {
     return { ...state };
   }
+  if (action.type === CLEAR_FILTERS) {
+    console.log("halo2");
+    return {
+      ...state,
+      filters: {
+        ...state.filters,
+        text: "",
+        company: "all",
+        category: "all",
+        color: "all",
+        price: state.filters.max_price,
+        shipping: false,
+      },
+    };
+  }
 
   throw new Error(`No Matching "${action.type}" - action type`);
 };
