@@ -3,17 +3,6 @@ import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const { amount } = useSelector((store) => {
-    /* 
-    console.log("store>>", store);
-    {
-    "cart": {
-        "cartItem": [],
-        "amount": 0,
-        "total": 0,
-        "isLoading": true
-    }
-}
-    */
     return store.cart;
   });
 
