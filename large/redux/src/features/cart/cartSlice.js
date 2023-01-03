@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 // import { data as cartItems } from "../../cartItems";
+import axios from "axios";
 
 const url = "https://course-api.com/react-useReducer-cart-project";
 
@@ -10,14 +11,41 @@ const initialState = {
   isLoading: true,
 };
 
-export const getCartItems = createAsyncThunk("cart/getCartItems", async () => {
-  try {
-    const res = await fetch(url);
-    return await res.json();
-  } catch (err) {
-    return console.log(err);
+export const getCartItems = createAsyncThunk(
+  "cart/getCartItems",
+  async (name, thunkAPI) => {
+    try {
+      /* 
+        console.log(name); // name>> random-name
+
+        console.log(thunkAPI);
+            {
+            "requestId": "fHxY1FEnIswLPzBgYGRBz",
+            "signal": {}
+           }
+          
+        console.log(thunkAPI.getState());
+            {
+            "cart": {
+                "cartItems": [],
+                "amount": 0,
+                "total": 0,
+                "isLoading": true
+            },
+            "modal": {
+                "isOpen": false
+            }
+          }
+
+            thunkAPI.dispatch(openModal()) !!!
+      */
+      const res = await axios(url);
+      return res.data;
+    } catch (err) {
+      return thunkAPI.rejectWithValue("something went wrong...");
+    }
   }
-});
+);
 
 const cartSlice = createSlice({
   name: "cart",
@@ -60,7 +88,25 @@ const cartSlice = createSlice({
         state.isLoading = false;
         state.cartItems = action.payload;
       })
-      .addCase(getCartItems.rejected, (state) => {
+      .addCase(getCartItems.rejected, (state, action) => {
+        /* 
+          console.log("action>>", action);
+                {
+            "type": "cart/getCartItems/rejected",
+            "payload": "something went wrong...",
+            "meta": {
+                "arg": "random-name",
+                "requestId": "b2v9ZYo2gUfU5fTQUC7Wf",
+                "rejectedWithValue": true,
+                "requestStatus": "rejected",
+                "aborted": false,
+                "condition": false
+            },
+            "error": {
+                "message": "Rejected"
+            }
+        }
+        */
         state.isLoading = false;
       });
   },
