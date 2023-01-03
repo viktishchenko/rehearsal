@@ -4,7 +4,7 @@ import { clearCart } from "../features/cart/cartSlice";
 
 const CartContainer = () => {
   const dispatch = useDispatch();
-  const { amount, cartItems } = useSelector((store) => {
+  const { amount, cartItems, total } = useSelector((store) => {
     return store.cart;
   });
 
@@ -37,7 +37,7 @@ const CartContainer = () => {
         <hr />
         <div className="cart-total">
           <h4>
-            total <span>$0.00</span>
+            total <span>${total.toFixed(2)}</span>
           </h4>
         </div>
         <button
