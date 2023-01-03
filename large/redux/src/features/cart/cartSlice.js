@@ -3,7 +3,7 @@ import { data as cartItems } from "../../cartItems";
 
 const initialState = {
   cartItems: cartItems,
-  amount: 5,
+  amount: 0,
   total: 0,
   isLoading: true,
 };
