@@ -1,5 +1,10 @@
 import React from "react";
+import Landing from "./pages/Landing";
 
 export default function App() {
-  return <h2>Jobster</h2>;
+  return (
+    <>
+      <Landing />
+    </>
+  );
 }
