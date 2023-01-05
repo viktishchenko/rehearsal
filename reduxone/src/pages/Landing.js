@@ -1,9 +1,10 @@
 import logo from "../assets/images/logo.svg";
 import main from "../assets/images/main.svg";
+import styled from "styled-components";
 
 const Landing = () => {
   return (
-    <main>
+    <Wrapper>
       <nav>
         <img src={logo} alt="logo" className="logo" />
       </nav>
@@ -22,8 +23,10 @@ const Landing = () => {
         </div>
         <img src={main} alt="job app" className="img main-img" />
       </div>
-    </main>
+    </Wrapper>
   );
 };
+
+const Wrapper = styled.main``;
 
 export default Landing;
