@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 const Wrapper = styled.aside`
   @media (min-width: 992px) {
@@ -14,10 +14,12 @@ const Wrapper = styled.aside`
     z-index: -1;
     opacity: 0;
     transition: var(--transition);
+    transform: translateX(-100%);
   }
   .show-sidebar {
     z-index: 99;
     opacity: 1;
+    transform: translateX(0);
   }
   .content {
     background: var(--white);
@@ -72,5 +74,5 @@ const Wrapper = styled.aside`
   .active .icon {
     color: var(--primary-500);
   }
-`
-export default Wrapper
+`;
+export default Wrapper;
