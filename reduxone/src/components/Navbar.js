@@ -7,7 +7,7 @@ import {
 } from "react-icons/fa";
 import Logo from "./Logo";
 import { useState } from "react";
-import { toggleSidebar } from "../features/user/userSlice";
+import { logoutUser, toggleSidebar } from "../features/user/userSlice";
 
 import { useDispatch, useSelector } from "react-redux";
 
@@ -47,7 +47,7 @@ const Navbar = () => {
               type="button"
               className="dropdown-btn"
               onClick={() => {
-                console.log("logout user");
+                dispatch(logoutUser());
               }}
             >
               logout
