@@ -8,6 +8,7 @@ import Job from "./Job";
 import JobsContainer from "./JobsContainer";
 import SearchContainer from "./SearchContainer";
 import Loading from "./Loading";
+import Jobinfo from "./Jobinfo";
 
 export {
   Logo,
@@ -20,4 +21,5 @@ export {
   SmallSidebar,
   FormRowSelect,
   Loading,
+  Jobinfo,
 };
