@@ -29,5 +29,26 @@ function binarySearch(arr, item) {
   return position;
 }
 
-console.log("binarySearch(array, 354) :>> ", binarySearch(array, 5353)); // :>>  12
+console.log("binarySearch(array, 5353) :>> ", binarySearch(array, 5353)); // :>>  12
 console.log("count :>> ", count); // :>>  4
+
+function recursiveBinarySearch(arr, item, start, end) {
+  let middle = Math.floor((start + end) / 2);
+  count++;
+
+  if (item === arr[middle]) {
+    return middle;
+  }
+
+  if (item < arr[middle]) {
+    return recursiveBinarySearch(arr, item, start, middle - 1);
+  } else {
+    return recursiveBinarySearch(arr, item, middle + 1, end);
+  }
+}
+
+console.log(
+  "recursiveBinarySearch(array,5353, 0, array.length)>>",
+  recursiveBinarySearch(array, 5353, 0, array.length) // >> 12
+);
+console.log("count>>", count); // >> 4
