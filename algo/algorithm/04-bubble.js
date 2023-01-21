@@ -32,5 +32,5 @@ selectionSort(array)>> [
   34265, 345345
 ]
 */
-console.log("count>>", count); // count>> 484 !!! (vs 231 from selectingSort)
+console.log("count>>", count); // count>> 484 !!! (vs 231 from selectingSort & vs 98 hoare)
 console.log("array.length>>", array.length); // 22
