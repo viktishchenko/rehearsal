@@ -8,8 +8,8 @@ const array = [
 let count = 0;
 
 function bubbleSort(arr) {
-  for (let i = 0; i < array.length; i++) {
-    for (let j = 0; j < array.length; j++) {
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = 0; j < arr.length; j++) {
       if (arr[j] > arr[j + 1]) {
         let tmp = arr[j];
         arr[j] = arr[j + 1];
